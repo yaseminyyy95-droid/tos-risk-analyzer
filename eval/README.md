@@ -43,10 +43,12 @@ npm run eval:validate-gold
 3. Gerçek sağlayıcıyla çalıştırın:
 
 ```bash
-OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model gpt-4.1 --repeats 1
+OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1
 ```
 
-Anthropic için `ANTHROPIC_API_KEY` ile `--provider anthropic --model claude-opus-5-5`, Groq için `GROQ_API_KEY` ile `--provider groq` kullanın.
+Anthropic için `ANTHROPIC_API_KEY` ile `--provider anthropic --model <MODEL_ADI>`, Groq için `GROQ_API_KEY` ile `--provider groq --model <MODEL_ADI>` kullanın.
+
+> `<MODEL_ADI>` yerine sağlayıcının güncel model listesinden bir model adı yazın (OpenAI: platform.openai.com/docs/models, Anthropic: platform.claude.com/docs/en/about-claude/models, Groq: console.groq.com/docs/models). Eval'de ret-fallback her zaman kapalıdır; yanıtlayan model istenenden farklıysa run çıktısında ⚠ uyarısı ve `meta.json`'da `servedModelMismatch: true` görünür.
 
 4. Ham yanıtlar `eval/runs/_last/raw/` altına kaydedilir. Aynı yanıtları anahtarsız yeniden skorlamak için:
 

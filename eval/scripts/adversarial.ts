@@ -3,7 +3,7 @@
 //   Mock (anahtarsız): temiz sürüm --replay kaydından; saldırılı sürümler "talimata uyan" iki model
 //   profiliyle (omit: riskleri gizler; inflate: gerçek bulguları korur + sahte güvence ekler) →
 //   doğrulama katmanının İZOLE etkisini ölçer.
-//   Gerçek: npm run eval:adversarial -- --provider openai --model gpt-4.1
+//   Gerçek: npm run eval:adversarial -- --provider openai --model <MODEL_ADI>
 import fs from "node:fs";
 import path from "node:path";
 import { analyzeDocument } from "../../src/core/pipeline";

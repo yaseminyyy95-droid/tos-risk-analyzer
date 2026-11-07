@@ -1,4 +1,6 @@
 // Kullanıcı tarafından güncellenebilir; sağlayıcı dokümantasyonundan doğrulayın.
+// DOĞRULAMA DURUMU (Faz 11): bu adlar geliştirme sırasında sağlayıcıların canlı dokümanlarıyla doğrulanamadı.
+// Claude kimlikleri gömülü bir API referansından (2026-10 önbelleği) alındı; OpenAI ve Groq adları doğrulanmadı.
 // Options sayfasında serbest metin alanı da vardır; buradaki liste yalnızca öneridir.
 export const SUGGESTED_MODELS = {
   // Claude model kimlikleri (Anthropic API referansı, 2026-10 önbelleği)

@@ -1,6 +1,6 @@
 // Korpustaki her doküman için analyzeDocument çalıştırır; ham LLM yanıtlarını, VerifiedReport'u ve
 // zamanlama/token kullanımını kaydeder.
-//   Gerçek:  OPENAI_API_KEY=... npm run eval:run -- --provider openai --model gpt-4.1 --repeats 1
+//   Gerçek:  OPENAI_API_KEY=... npm run eval:run -- --provider openai --model <MODEL_ADI> --repeats 1
 //   Replay:  npm run eval:run -- --provider mock --replay eval/runs/example-synthetic   (anahtarsız)
 //   Örnek:   npm run eval:run -- --provider mock --simulate --out eval/runs/example-synthetic
 import fs from "node:fs";

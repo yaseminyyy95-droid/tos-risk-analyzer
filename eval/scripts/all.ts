@@ -1,6 +1,6 @@
 // Tüm eval hattı: (korpus yoksa sentetik korpus) → gold doğrulama → run/replay → score → adversarial → rapor.
 //   Anahtarsız:  npm run eval:all -- --provider mock --replay eval/runs/example-synthetic
-//   Gerçek:      OPENAI_API_KEY=... npm run eval:all -- --provider openai --model gpt-4.1 --repeats 1
+//   Gerçek:      OPENAI_API_KEY=... npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1
 import fs from "node:fs";
 import path from "node:path";
 import { P, ROOT, fmtPct, listCorpus, parseArgs } from "./lib";

@@ -190,7 +190,7 @@ Ardından Chrome'da `chrome://extensions` → **Geliştirici modu** → **Paketl
 - Sayfa metni, **siz analiz başlattığınızda** yalnızca seçtiğiniz sağlayıcıya gönderilir. Her sağlayıcı için ilk kullanımda ayrıca onay istenir.
 - Anthropic modellerinde uzantıdan doğrudan çağrı için `anthropic-dangerous-direct-browser-access` başlığı kullanılır; çağrıda yalnızca sizin kendi anahtarınız bulunur.
 - İzinler: `activeTab`, `scripting`, `storage`, `sidePanel`, `contextMenus`; host izni yalnızca üç LLM API'si için. `<all_urls>` **opsiyoneldir** ve yalnızca "Hukuki sayfaları otomatik algıla" açılırsa istenir. Bu mod analizi kendiliğinden başlatmaz; yalnızca rozet gösterir.
-- **Model adları**: öneri listesi `src/core/providers/models.ts` dosyasında tek yerdedir. Claude kimlikleri Anthropic referansından alınmıştır (varsayılan `claude-opus-5-5`). OpenAI ve Groq önerilerinin güncelliği bu oturumda doğrulanamadı; ayarlar sayfasındaki serbest metin alanına sağlayıcının güncel model adını yazabilirsiniz.
+- **Model adları**: öneri listesi `src/core/providers/models.ts` dosyasında tek yerdedir. Bu listeler geliştirme sırasında sağlayıcıların canlı dokümanlarıyla **doğrulanamadı**: Claude kimlikleri yalnızca gömülü bir API referansından (2026-10 önbelleği) alındı, OpenAI ve Groq adları hiç doğrulanmadı. Ayarlar sayfasındaki serbest metin alanına **sağlayıcının güncel listesinden seçtiğiniz** model adını yazın. Komut örneklerinde model adı `<MODEL_ADI>` yer tutucusuyla gösterilir; `<MODEL_ADI>` yerine sağlayıcının güncel model listesinden bir model adı yazın (OpenAI: platform.openai.com/docs/models, Anthropic: platform.claude.com/docs/en/about-claude/models, Groq: console.groq.com/docs/models).
 
 ## Testler
 
@@ -278,7 +278,7 @@ Ayrıntılar: [eval/README.md](eval/README.md), [docs/EVAL_REPORT.md](docs/EVAL_
 - **Gerçek sağlayıcı ile tek komut:**
 
   ```bash
-  OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model gpt-4.1 --repeats 1
+  OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1
   ```
 
 - **Sınırlamalar:** küçük n; gold etiketler **LLM destekli taslaktır, insan incelemesinden geçmeden kesin metrik değildir (annotation bias riski)**; tek annotator; sitelerin metni değişebilir; model nondeterminizmi.
