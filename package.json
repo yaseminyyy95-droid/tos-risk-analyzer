@@ -13,7 +13,7 @@
     "fixtures:build": "tsx scripts/build-fixtures.ts",
     "harness:build": "vite build --config vite.harness.config.ts",
     "harness:serve": "vite preview --config vite.harness.config.ts --port 4173 --strictPort",
-    "e2e": "npm run harness:build && node tests/e2e/run-e2e.mjs",
+    "e2e": "npm run harness:build && tsx tests/e2e/run-e2e.ts",
     "e2e:video:check": "node scripts/check-video.mjs",
     "smoke": "npm run build && node tests/smoke/extension.smoke.mjs",
     "eval:fetch": "tsx eval/scripts/fetch.ts",

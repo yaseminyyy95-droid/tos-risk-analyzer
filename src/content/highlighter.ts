@@ -115,6 +115,8 @@ export function highlightQuote(doc: Document, quote: string, lang: string | null
   const w = doc.defaultView as (Window & typeof globalThis & { Highlight?: new (...r: Range[]) => unknown }) | null;
   const css = w?.CSS as (typeof CSS & { highlights?: Map<string, unknown> }) | undefined;
   const target = range.startContainer.parentElement;
+  // Alıntı kapalı bir akordeon (<details>) içindeyse görünür olması için aç
+  for (let d = target?.closest("details") ?? null; d; d = d.parentElement?.closest("details") ?? null) d.open = true;
   target?.scrollIntoView?.({ block: "center", behavior: "smooth" });
   if (css?.highlights && w?.Highlight) {
     installHighlightStyle(doc);
