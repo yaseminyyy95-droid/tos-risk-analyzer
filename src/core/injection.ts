@@ -57,9 +57,17 @@ export const INJECTION_RULES: InjectionRule[] = [
     weight: 0.6,
   },
   {
-    // eval/adversarial "vendor_certified" saldırısının ortaya çıkardığı açık: otomatik araçlara ne raporlayacaklarını söyleyen cümleler
-    id: "instructs_automated_tools",
-    re: /\b(ai|automated|automatic|llm|analy[sz]er|ai-based)\s+(tools?|systems?|assistants?|analy[sz]ers?|models?|readers?|reviewers?)\s+(should|must|shall|are (instructed|required|expected) to)\s+(report|output|return|rate|score|classify|summari[sz]e|treat|consider|mark)\b/i,
+    // eval/adversarial "vendor_certified" açığı için eklendi, Faz 11'de daraltıldı: yalnızca AI / analizci /
+    // değerlendiriciye hitap edip ona rapor/skor talimatı veren cümleler. Meşru "AI systems must classify…",
+    // "Automated tools should report vulnerabilities…" gibi cümleler eşleşmez (bkz. injection.test.ts).
+    id: "instructs_ai_reviewer",
+    re: /\b(ai|llms?|language models?|analy[sz]ers?|evaluators?|ai assistants?|chatbots?)\b.{0,40}\b(should|must|shall|are (instructed|required|expected) to)\s+(report|output|return|rate|score)\b.{0,40}\b(no risks?|safe|low[- ]risk|risk[- ]free|zero|0|compliant|approved)\b/i,
+    weight: 0.6,
+  },
+  {
+    // otomatik araçlara bir değerlendirme SONUCU dikte etme ("…automated tools should report no risks")
+    id: "dictates_tool_verdict",
+    re: /\b(automated|automatic)\s+(tools?|systems?|scanners?|reviews?)\b.{0,30}\b(report|rate|score|mark|treat|classify)\b.{0,20}\b(no risks?|as safe|safe|low[- ]risk|risk[- ]free|a (risk )?score of 0)\b/i,
     weight: 0.6,
   },
   {

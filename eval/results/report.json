@@ -5,7 +5,7 @@
     "model": "mock-replay",
     "repeats": 1,
     "promptVersion": "2026-11-v1",
-    "createdAt": "2026-11-07T17:43:48.173Z",
+    "createdAt": "2026-11-07T19:42:15.450Z",
     "synthetic": true,
     "label": "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez",
     "replayOf": "eval/runs/example-synthetic",
@@ -13,7 +13,12 @@
       "synthetic-acme-cloud-tos",
       "synthetic-brightstream-subscription",
       "synthetic-nimbus-health-privacy"
-    ]
+    ],
+    "refusalFallback": false,
+    "servedModels": [
+      "mock-replay"
+    ],
+    "servedModelMismatch": false
   },
   "documents": 3,
   "micro": {
@@ -64,7 +69,7 @@
     ]
   },
   "totals": {
-    "latencyMs": 39,
+    "latencyMs": 61,
     "inputTokens": 7344,
     "outputTokens": 2381
   },
