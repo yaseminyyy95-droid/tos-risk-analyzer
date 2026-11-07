@@ -71,9 +71,37 @@ async function writeCorpus(entry: ManifestEntry, doc: ExtractedDocument, env: "c
   console.log(`✓ ${entry.id}: ${doc.blocks.length} blok, ${doc.stats.visibleChars} karakter, ${doc.quarantined.length} karantina [${env}]`);
 }
 
+/** --from-raw öncesi: eval/raw içinde beklenen HTML dosyaları var mı? Yoksa anlaşılır Türkçe hata. */
+export function checkRawDir(manifest: Manifest, only: string | null, rawDir = P.raw): { ok: boolean; message: string; missing: string[] } {
+  const wanted = manifest.documents.filter((e) => !only || e.id === only);
+  const present = fs.existsSync(rawDir) ? fs.readdirSync(rawDir).filter((f) => f.endsWith(".html")) : [];
+  const missing = wanted.filter((e) => !present.includes(`${e.id}.html`)).map((e) => e.id);
+  if (only && !wanted.length) return { ok: false, message: `✗ "${only}" manifest'te yok. Geçerli kimlikler: ${manifest.documents.map((e) => e.id).join(", ")}`, missing: [] };
+  if (missing.length < wanted.length) return { ok: true, message: "", missing };
+  const rel = path.relative(ROOT, rawDir) || rawDir;
+  const lines = [
+    `✗ ${rel}/ klasöründe işlenecek HTML dosyası yok.`,
+    "",
+    "--from-raw, sayfaların tarayıcıdan kaydedilmiş HTML kopyalarını kullanır. Beklenen dosyalar:",
+    ...wanted.map((e) => `  • ${rel}/${e.id}.html   ← ${e.url ?? "(URL yok)"}`),
+    "",
+    "Her sayfayı tarayıcıda açın, çerez bannerını kapatın, sonra Dosya → \"Farklı kaydet\" → \"Web sayfası, yalnızca HTML\" ile yukarıdaki adla kaydedin.",
+    "Ayrıntılı adımlar: eval/REAL_CORPUS_STEPS.md",
+  ];
+  return { ok: false, message: lines.join("\n"), missing };
+}
+
 export async function runFetch(args = parseArgs()): Promise<number> {
   const manifest = readJson<Manifest>(P.manifest);
   const only = typeof args.only === "string" ? args.only : null;
+  if (args["from-raw"] && !args.synthetic) {
+    const chk = checkRawDir(manifest, only);
+    if (!chk.ok) {
+      console.error(chk.message);
+      return 1; // manifest'e dokunulmaz
+    }
+    if (chk.missing.length) console.warn(`Uyarı: şu dosyalar eksik, atlanacak: ${chk.missing.map((m) => `${m}.html`).join(", ")}`);
+  }
   let failures = 0;
   if (args.synthetic) {
     for (const e of manifest.synthetic) {
@@ -88,7 +116,7 @@ export async function runFetch(args = parseArgs()): Promise<number> {
       const rawFile = path.join(P.raw, `${e.id}.html`);
       try {
         if (args["from-raw"]) {
-          if (!fs.existsSync(rawFile)) throw new Error(`${path.relative(ROOT, rawFile)} yok`);
+          if (!fs.existsSync(rawFile)) continue; // eksik dosya: yukarıda uyarıldı, manifest durumu değişmez
           const { doc, env } = await extractHtml(fs.readFileSync(rawFile, "utf8"), e.url!);
           await writeCorpus(e, doc, env, false, path.relative(ROOT, rawFile));
         } else {
