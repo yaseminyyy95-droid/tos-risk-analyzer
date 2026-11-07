@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-fixture",
+  "object": "chat.completion",
+  "created": 1767225600,
+  "model": "gpt-4.1",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"schema_version\":\"1.0\",\"document_type\":\"terms_of_service\",\"document_language\":\"en\",\"llm_suggested_score\":80,\"summary_tr\":\"Bu kullanım koşulları; zorunlu tahkim, kişisel veri satışı, otomatik yenileme, iade yapılmaması, geniş içerik lisansı ve yapay zekâ eğitimi gibi tüketici için önemli riskler içeriyor.\",\"findings\":[{\"category\":\"arbitration_class_waiver\",\"severity\":\"critical\",\"confidence\":0.95,\"title_tr\":\"Zorunlu tahkim ve toplu dava feragati\",\"explanation_tr\":\"Uyuşmazlıklar mahkeme yerine bireysel tahkimde çözülür. Jüri yargılaması ve toplu dava hakkından vazgeçmiş olursunuz.\",\"quote\":\"You and Acme agree that any dispute arising out of or relating to these Terms or the Service will be resolved exclusively by binding individual arbitration, and you waive any right to a jury trial or to participate in a class action lawsuit\",\"segment_id\":\"S016\"},{\"category\":\"data_sale_or_sharing\",\"severity\":\"critical\",\"confidence\":0.93,\"title_tr\":\"Kişisel verilerin satılması\",\"explanation_tr\":\"Şirket iletişim bilgilerinizi ve ilgi alanlarınızı reklam ortaklarına satabilir. Bu madde kapalı bir bölümün içinde yer alıyor.\",\"quote\":\"we may sell your personal information, including your contact details, device identifiers and inferred interests\",\"segment_id\":\"S012\"},{\"category\":\"auto_renewal\",\"severity\":\"high\",\"confidence\":0.9,\"title_tr\":\"Otomatik yenileme\",\"explanation_tr\":\"Abonelik siz iptal etmedikçe her dönem sonunda yenilenir ve o günkü ücret kartınızdan çekilir.\",\"quote\":\"Your subscription will automatically renew at the end of each billing period and your payment method will be charged the then-current fee\",\"segment_id\":\"S005\"},{\"category\":\"cancellation_refund\",\"severity\":\"high\",\"confidence\":0.9,\"title_tr\":\"İade yapılmıyor\",\"explanation_tr\":\"Kısmen kullandığınız dönemler için bile ödeme iadesi yapılmaz; yalnızca yasanın zorunlu kıldığı durumlar istisnadır.\",\"quote\":\"All payments are non-refundable, including for partially used subscription periods\",\"segment_id\":\"S006\"},{\"category\":\"content_license_ip\",\"severity\":\"high\",\"confidence\":0.88,\"title_tr\":\"Süresiz ve geri alınamaz içerik lisansı\",\"explanation_tr\":\"Yüklediğiniz içerik üzerinde şirkete süresiz, geri alınamaz ve devredilebilir bir kullanım hakkı verirsiniz.\",\"quote\":\"you grant Acme a perpetual, irrevocable, worldwide, royalty-free license to use, copy, modify, publicly display and distribute any content you upload (\\\"User Content\\\")\",\"segment_id\":\"S007\"},{\"category\":\"ai_training_use\",\"severity\":\"high\",\"confidence\":0.9,\"title_tr\":\"İçeriğin yapay zekâ eğitiminde kullanılması\",\"explanation_tr\":\"Dosyalarınız ve kullanım verileriniz şirketin yapay zekâ modellerini eğitmek için kullanılabilir ve bu veriler silindikten sonra da kalabilir.\",\"quote\":\"We may use your content and usage data to train our AI models and improve our machine learning systems\",\"segment_id\":\"S008\"}],\"injection_suspected\":false,\"injection_segment_ids\":[],\"uncertainty_notes_tr\":\"Gizlilik bildirimi ayrı bir belgede olduğu için incelenemedi.\"}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4200,
+    "completion_tokens": 900,
+    "total_tokens": 5100
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "note": "build-fixtures.ts tarafından üretildi; E2E beklentileri",
+  "happy": {
+    "findings": 6,
+    "score": 83,
+    "segments": 28
+  },
+  "compromised": {
+    "verified": 1,
+    "rejected": 3,
+    "score": 35,
+    "fabricated": "We fully protect your data and never share it with anyone.",
+    "injectionSegment": "S028"
+  }
+}
