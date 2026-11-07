@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, beforeEach } from "vitest";
+import { setBodyHtml } from "./helpers/dom";
 import { extractDocument, selectRoot, documentFromSelection } from "../../src/content/extractor";
 
 const LONG = (s: string) => `${s} `.repeat(Math.ceil(600 / (s.length + 1)));
@@ -7,7 +8,7 @@ const CLAUSE = "You agree that all disputes will be resolved by binding individu
 
 function setBody(html: string, title = "Terms of Service") {
   document.title = title;
-  document.body.innerHTML = html; // eslint-disable-line no-restricted-syntax -- yalnızca test fixture'ı
+  setBodyHtml(html);
 }
 
 function texts() {

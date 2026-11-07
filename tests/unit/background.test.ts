@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, beforeEach } from "vitest";
+import { setBodyHtml } from "./helpers/dom";
 import { createChromeShim, type ChromeShim } from "../../e2e/chrome-shim";
 import { initBackground } from "../../src/background/orchestrator";
 import { getKey, setKey, deleteKey, keyStatuses } from "../../src/background/keystore";
@@ -13,10 +14,9 @@ const KEY = "sk-test-unit-abcdefgh1234";
 
 function setPage() {
   document.title = "Acme Terms of Service";
-  // eslint-disable-next-line no-restricted-syntax -- test fixture
-  document.body.innerHTML = `<main><h1>Terms</h1>${[ARB, RENEW, NEUTRAL, NEUTRAL, NEUTRAL, ARB.replace("Acme", "Acme Cloud")]
+  setBodyHtml(`<main><h1>Terms</h1>${[ARB, RENEW, NEUTRAL, NEUTRAL, NEUTRAL, ARB.replace("Acme", "Acme Cloud")]
     .map((t) => `<p>${t} ${NEUTRAL}</p>`)
-    .join("")}</main>`;
+    .join("")}</main>`);
 }
 
 function fakeFetch(content: () => string) {

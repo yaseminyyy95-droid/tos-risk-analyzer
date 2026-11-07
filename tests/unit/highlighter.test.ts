@@ -1,9 +1,10 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from "vitest";
+import { setBodyHtml } from "./helpers/dom";
 import { findQuoteRange, highlightQuote, clearHighlights } from "../../src/content/highlighter";
 
 function setBody(html: string) {
-  document.body.innerHTML = html; // eslint-disable-line no-restricted-syntax -- test fixture
+  setBodyHtml(html);
 }
 
 describe("highlighter", () => {

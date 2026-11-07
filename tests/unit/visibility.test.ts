@@ -1,9 +1,10 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from "vitest";
+import { setBodyHtml } from "./helpers/dom";
 import { parseColor, contrastRatio, classifyElement, isLegitCollapsible, defaultStyleGetter } from "../../src/content/visibility";
 
 function el(html: string): Element {
-  document.body.innerHTML = html; // eslint-disable-line no-restricted-syntax -- test fixture
+  setBodyHtml(html);
   return document.querySelector("[data-t]")!;
 }
 const ctx = (textLength = 100, inCollapsed = false) => ({ inCollapsed, getStyle: defaultStyleGetter, textLength });
