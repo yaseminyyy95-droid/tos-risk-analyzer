@@ -126,7 +126,7 @@ export function initBackground(api: typeof chrome, opts: OrchestratorOptions = {
         }
       }
 
-      const llm = createProvider(provider, key, opts.http ?? {});
+      const llm = createProvider(provider, key, { ...(opts.http ?? {}), refusalFallback: settings.refusalFallback });
       let report;
       try {
         ({ report } = await analyzeDocument(doc, llm, { model, signal: ac.signal, onProgress: (event) => post({ type: "PROGRESS", event }) }));

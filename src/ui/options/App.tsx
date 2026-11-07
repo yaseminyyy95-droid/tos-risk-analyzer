@@ -149,6 +149,15 @@ export function OptionsApp({ api = globalThis.chrome }: { api?: typeof chrome })
             Hukuki sayfaları otomatik algıla (tüm sitelere erişim izni ister; yalnızca rozet gösterir, analiz yine sizin onayınızla başlar)
           </label>
           <label class="row">
+            <input
+              type="checkbox"
+              data-cy="refusal-fallback"
+              checked={settings.refusalFallback}
+              onChange={(e) => void save({ refusalFallback: (e.target as HTMLInputElement).checked })}
+            />
+            Model reddederse başka modele geç (yalnızca Anthropic; varsayılan kapalı). Açıksa rapor, istediğiniz modelden farklı bir Claude modeli tarafından üretilebilir; bu durumda raporda uyarı gösterilir.
+          </label>
+          <label class="row">
             <input type="checkbox" checked={settings.developerMode} onChange={(e) => void save({ developerMode: (e.target as HTMLInputElement).checked })} />
             Geliştirici modu (reddedilen iddiaların sebeplerini göster)
           </label>

@@ -178,6 +178,11 @@ export function ReportView(props: { report: VerifiedReport; developerMode: boole
         {report.legalPageConfidence < 0.4 && <p class="toast">{tr.lowLegalConfidence}</p>}
         {props.fromCache && <p class="meta">{tr.fromCache}</p>}
       </header>
+      {report.meta.servedModelMismatch && (
+        <p class="toast" role="status" data-cy="model-mismatch">
+          {tr.modelMismatch(report.model, report.servedModel ?? "?")}
+        </p>
+      )}
       <StatusBadge status={report.status} reasons={report.statusReasons_tr} />
       {report.status !== "FAILED" && <ScoreGauge report={report} />}
       <InjectionAlert report={report} onShow={onShow} />

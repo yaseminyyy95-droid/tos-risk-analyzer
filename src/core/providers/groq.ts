@@ -33,7 +33,7 @@ export class GroqProvider implements LLMProvider {
       } else throw e;
     }
     const parsed = parseChatCompletion(await res.json());
-    return { ...parsed, latencyMs: Date.now() - t0 };
+    return { ...parsed, latencyMs: Date.now() - t0, temperature: req.temperature, refusalFallback: false };
   }
 
   async testKey(apiKey = this.apiKey): Promise<{ ok: boolean; message_tr: string }> {

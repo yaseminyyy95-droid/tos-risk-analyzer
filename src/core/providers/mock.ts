@@ -10,6 +10,8 @@ export class MockProvider implements LLMProvider {
   readonly id = "mock" as const;
   readonly calls: CompletionRequest[] = [];
   private responder: MockResponder;
+  /** test: sağlayıcının farklı bir model döndürmesini taklit et */
+  servedModel?: string;
 
   constructor(responses: string[] | MockResponder) {
     this.responder = Array.isArray(responses)
@@ -27,7 +29,7 @@ export class MockProvider implements LLMProvider {
     this.calls.push(req);
     const t0 = Date.now();
     const raw = await this.responder(req, idx);
-    return { raw, latencyMs: Date.now() - t0, usage: { inputTokens: Math.ceil((req.system.length + req.user.length) / 4), outputTokens: Math.ceil(raw.length / 4) } };
+    return { raw, latencyMs: Date.now() - t0, servedModel: this.servedModel ?? req.model, temperature: req.temperature, refusalFallback: false, usage: { inputTokens: Math.ceil((req.system.length + req.user.length) / 4), outputTokens: Math.ceil(raw.length / 4) } };
   }
 
   async testKey(): Promise<{ ok: boolean; message_tr: string }> {

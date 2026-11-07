@@ -19,6 +19,9 @@ export function reportToMarkdown(report: VerifiedReport): string {
   L.push(`- Skor: **${report.score} / 100 (${report.level})** — yalnızca doğrulanmış alıntılardan hesaplanır`);
   if (report.llmSuggestedScore !== null) L.push(`- Modelin önerdiği skor (tanısal): ${report.llmSuggestedScore}`);
   L.push(`- Sağlayıcı / model: ${mdEscape(report.provider)} / ${mdEscape(report.model)} · prompt ${report.promptVersion}`);
+  L.push(
+    `- Yanıtlayan model: ${mdEscape(report.servedModel ?? "bilinmiyor")}${report.meta.servedModelMismatch ? " (⚠ istenenden farklı)" : ""} · temperature: ${report.meta.temperature ?? "—"} · ret-fallback: ${report.meta.refusalFallback ? "açık" : "kapalı"}`,
+  );
   L.push(`- Tarih: ${report.createdAt} · metin SHA-256: \`${report.textSha256}\``, "");
   L.push("## Durum gerekçeleri", ...report.statusReasons_tr.map((r) => `- ${mdEscape(r)}`), "");
   if (report.summary_tr) L.push("## Özet", mdEscape(report.summary_tr), "");

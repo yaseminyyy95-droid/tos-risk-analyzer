@@ -15,10 +15,23 @@ export interface CompletionUsage {
   outputTokens?: number;
 }
 
+export type TemperatureSetting = 0 | "provider_default";
+
 export interface CompletionResult {
   raw: string;
   usage?: CompletionUsage;
   latencyMs: number;
+  /** API yanıtındaki gerçek `model` alanı (yoksa undefined) */
+  servedModel?: string;
+  /** İstekte gönderilen temperature; gönderilemediyse "provider_default" */
+  temperature?: TemperatureSetting;
+  /** Bu çağrıda sunucu tarafı ret-fallback'i açık mıydı */
+  refusalFallback?: boolean;
+}
+
+export interface ProviderOptions {
+  /** Anthropic: model reddederse sunucu tarafında başka bir modele geç (varsayılan KAPALI) */
+  refusalFallback?: boolean;
 }
 
 export interface LLMProvider {

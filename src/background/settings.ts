@@ -9,6 +9,7 @@ export const DEFAULT_SETTINGS: Settings = {
   sessionOnlyKeys: false,
   autoDetect: false,
   developerMode: false,
+  refusalFallback: false,
   consent: {},
 };
 
@@ -30,6 +31,7 @@ export function normalizeSettings(raw: unknown): Settings {
     sessionOnlyKeys: s.sessionOnlyKeys === true,
     autoDetect: s.autoDetect === true,
     developerMode: s.developerMode === true,
+    refusalFallback: s.refusalFallback === true,
     consent,
   };
 }

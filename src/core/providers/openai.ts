@@ -5,6 +5,7 @@ export const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 export const OPENAI_MODELS_URL = "https://api.openai.com/v1/models";
 
 interface ChatCompletion {
+  model?: string;
   choices?: { message?: { content?: string | null; refusal?: string | null }; finish_reason?: string }[];
   usage?: { prompt_tokens?: number; completion_tokens?: number };
 }
@@ -27,12 +28,16 @@ export function buildChatBody(req: CompletionRequest, responseFormat: "json_sche
   };
 }
 
-export function parseChatCompletion(data: ChatCompletion): { raw: string; usage?: CompletionResult["usage"] } {
+export function parseChatCompletion(data: ChatCompletion): { raw: string; usage?: CompletionResult["usage"]; servedModel?: string } {
   const choice = data.choices?.[0];
   if (choice?.message?.refusal) throw new ProviderError("refusal");
   const raw = choice?.message?.content;
   if (!raw) throw new ProviderError("empty_response");
-  return { raw, usage: { inputTokens: data.usage?.prompt_tokens, outputTokens: data.usage?.completion_tokens } };
+  return {
+    raw,
+    usage: { inputTokens: data.usage?.prompt_tokens, outputTokens: data.usage?.completion_tokens },
+    servedModel: typeof data.model === "string" ? data.model : undefined,
+  };
 }
 
 export class OpenAIProvider implements LLMProvider {
@@ -51,7 +56,7 @@ export class OpenAIProvider implements LLMProvider {
       { ...this.http, signal: req.signal, secret: this.apiKey },
     );
     const parsed = parseChatCompletion((await res.json()) as ChatCompletion);
-    return { ...parsed, latencyMs: Date.now() - t0 };
+    return { ...parsed, latencyMs: Date.now() - t0, temperature: req.temperature, refusalFallback: false };
   }
 
   async testKey(apiKey = this.apiKey): Promise<{ ok: boolean; message_tr: string }> {

@@ -12,7 +12,10 @@ import { PROMPT_VERSION } from "../../src/core/prompt";
 import { P, ROOT, isMain, listCorpus, parseArgs, readJson, writeJson, type CorpusEntry } from "./lib";
 import { simulatedResponder } from "./simulated-model";
 
-const KEY_ENV: Record<string, string> = { openai: "OPENAI_API_KEY", anthropic: "ANTHROPIC_API_KEY", groq: "GROQ_API_KEY" };
+/** Eval'de ret-fallback HER ZAMAN kapalıdır: ölçülen model, istenen model olmalı. */
+export const EVAL_PROVIDER_OPTIONS = { refusalFallback: false } as const;
+
+export const KEY_ENV: Record<string, string> = { openai: "OPENAI_API_KEY", anthropic: "ANTHROPIC_API_KEY", groq: "GROQ_API_KEY" };
 
 export interface RunOptions {
   provider: LLMProviderId;
@@ -34,6 +37,9 @@ export interface RunMeta {
   label: string;
   replayOf: string | null;
   docs: string[];
+  refusalFallback: false;
+  servedModels: string[];
+  servedModelMismatch: boolean;
 }
 
 export interface DocRunRecord {
@@ -46,6 +52,10 @@ export interface DocRunRecord {
   rejected: { reason: string; category: string; quote: string }[];
   usage: { inputTokens: number; outputTokens: number };
   latencyMs: number;
+  requestedModel: string;
+  servedModel: string | null;
+  servedModelMismatch: boolean;
+  temperature: 0 | "provider_default" | null;
 }
 
 /** Replay: eval/runs/<run>/raw/<doc>.r<k>.c<chunk>.a<attempt>.txt dosyalarını çağrı sırasıyla döndürür. */
@@ -74,7 +84,7 @@ function providerFor(o: RunOptions, doc: CorpusEntry, repeat: number): LLMProvid
   }
   const key = process.env[KEY_ENV[o.provider]!];
   if (!key) throw new Error(`${KEY_ENV[o.provider]} ortam değişkeni tanımlı değil`);
-  return createProvider(o.provider, key);
+  return createProvider(o.provider, key, EVAL_PROVIDER_OPTIONS);
 }
 
 export async function runEval(o: RunOptions): Promise<RunMeta> {
@@ -83,6 +93,8 @@ export async function runEval(o: RunOptions): Promise<RunMeta> {
   const replayMeta = o.replay && fs.existsSync(path.join(o.replay, "meta.json")) ? readJson<RunMeta>(path.join(o.replay, "meta.json")) : null;
   const synthetic = Boolean(o.simulate || replayMeta?.synthetic || corpus.every((c) => c.synthetic));
   fs.rmSync(o.out, { recursive: true, force: true });
+  const served = new Set<string>();
+  let mismatch = false;
   for (const doc of corpus) {
     for (let r = 1; r <= o.repeats; r++) {
       const provider = providerFor(o, doc, r);
@@ -107,10 +119,17 @@ export async function runEval(o: RunOptions): Promise<RunMeta> {
         rejected: diagnostics.rejected.map((x) => ({ reason: x.reason, category: x.finding.category, quote: x.finding.quote })),
         usage,
         latencyMs: Date.now() - t0,
+        requestedModel: o.model,
+        servedModel: report.servedModel,
+        servedModelMismatch: report.meta.servedModelMismatch,
+        temperature: report.meta.temperature,
       };
       writeJson(path.join(o.out, "reports", `${doc.id}.r${r}.json`), rec);
+      if (report.servedModel) for (const m of report.servedModel.split(", ")) served.add(m);
+      if (report.meta.servedModelMismatch) mismatch = true;
       console.log(
-        `  ${doc.id} r${r}: ${report.status}, skor ${report.score}, ${report.findings.length} doğrulanmış / ${report.proposedCount} önerilen, ${report.rejectedCount} reddedilen`,
+        `  ${doc.id} r${r}: ${report.status}, skor ${report.score}, ${report.findings.length} doğrulanmış / ${report.proposedCount} önerilen, ${report.rejectedCount} reddedilen` +
+          (report.meta.servedModelMismatch ? ` ⚠ yanıtlayan model: ${report.servedModel} (istenen: ${report.model})` : ""),
       );
     }
   }
@@ -124,6 +143,9 @@ export async function runEval(o: RunOptions): Promise<RunMeta> {
     label: synthetic ? "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez" : "Gerçek sağlayıcı çalışması",
     replayOf: o.replay ? path.relative(ROOT, o.replay) : null,
     docs: corpus.map((c) => c.id),
+    refusalFallback: EVAL_PROVIDER_OPTIONS.refusalFallback,
+    servedModels: [...served],
+    servedModelMismatch: mismatch,
   };
   writeJson(path.join(o.out, "meta.json"), meta);
   return meta;

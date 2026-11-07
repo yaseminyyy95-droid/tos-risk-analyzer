@@ -112,7 +112,7 @@ describe("AnthropicProvider", () => {
     expect(body).not.toHaveProperty("tools");
     expect(body).not.toHaveProperty("tool_choice");
     expect(body).not.toHaveProperty("temperature"); // güncel modellerde sampling parametresi 400 döner
-    expect(body.fallbacks).toBe("default");
+    expect(body).not.toHaveProperty("fallbacks"); // ret-fallback varsayılan KAPALI
     expect(JSON.stringify(body)).not.toMatch(/minLength|maxLength|"maximum"|"pattern"/);
   });
   it("eski model: temperature gönderilir, fallback/effort yok", () => {

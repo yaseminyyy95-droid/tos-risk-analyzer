@@ -21,6 +21,10 @@ function rec(findings: ReturnType<typeof finding>[]): DocRunRecord {
     rejected: [],
     usage: { inputTokens: 0, outputTokens: 0 },
     latencyMs: 0,
+    requestedModel: "m",
+    servedModel: "m",
+    servedModelMismatch: false,
+    temperature: 0,
     report: { findings } as never,
   };
 }

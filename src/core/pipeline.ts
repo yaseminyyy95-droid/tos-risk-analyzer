@@ -35,7 +35,7 @@ export interface AnalyzeOptions {
 }
 
 export interface AnalyzeDiagnostics {
-  rawResponses: { chunk: number; attempt: number; raw: string; latencyMs: number; usage?: CompletionUsage }[];
+  rawResponses: { chunk: number; attempt: number; raw: string; latencyMs: number; usage?: CompletionUsage; servedModel?: string }[];
   rejected: RejectedFinding[];
   corrections: string[];
   canonicalText: string;
@@ -48,6 +48,13 @@ export interface AnalyzeDiagnostics {
 export interface AnalyzeResult {
   report: VerifiedReport;
   diagnostics: AnalyzeDiagnostics;
+}
+
+/** Sağlayıcıların sürüm ekli yanıt adlarını (ör. "gpt-4.1" → "gpt-4.1-2025-04-14") uyuşmazlık saymaz. */
+export function modelMatches(requested: string, served: string): boolean {
+  const r = requested.trim().toLowerCase();
+  const s = served.trim().toLowerCase();
+  return s === r || s.startsWith(r + "-") || s.startsWith(r + "@");
 }
 
 export function safeLang(lang: string | null | undefined): string | null {
@@ -103,6 +110,9 @@ export async function analyzeDocument(doc: ExtractedDocument, provider: LLMProvi
   };
 
   const chunkResults: ChunkVerification[] = [];
+  const servedModels = new Set<string>();
+  let temperature: 0 | "provider_default" | null = null;
+  let refusalFallback = false;
   let failedChunks = 0;
   let fatal: StatusInput["failure"] = null;
   let lastProviderError: ProviderError | null = null;
@@ -127,7 +137,10 @@ export async function analyzeDocument(doc: ExtractedDocument, provider: LLMProvi
           maxTokens: opts.maxTokens ?? 4096,
           signal: opts.signal,
         });
-        diagnostics.rawResponses.push({ chunk: chunk.index, attempt, raw: res.raw, latencyMs: res.latencyMs, usage: res.usage });
+        diagnostics.rawResponses.push({ chunk: chunk.index, attempt, raw: res.raw, latencyMs: res.latencyMs, usage: res.usage, servedModel: res.servedModel });
+        if (res.servedModel) servedModels.add(res.servedModel);
+        if (res.temperature !== undefined) temperature = temperature === "provider_default" ? temperature : res.temperature;
+        if (res.refusalFallback) refusalFallback = true;
         const parsed = parseLLMOutput(res.raw, secrets.canary);
         if (parsed.ok) report = parsed.report;
         else {
@@ -232,6 +245,12 @@ export async function analyzeDocument(doc: ExtractedDocument, provider: LLMProvi
     promptVersion: PROMPT_VERSION,
     provider: provider.id,
     model: opts.model,
+    servedModel: servedModels.size ? [...servedModels].join(", ") : null,
+    meta: {
+      temperature,
+      refusalFallback,
+      servedModelMismatch: [...servedModels].some((m) => !modelMatches(opts.model, m)),
+    },
     textSha256,
     durationMs: Date.now() - t0,
     status,
@@ -277,7 +296,8 @@ export function failedReport(doc: Pick<ExtractedDocument, "url" | "title" | "leg
   });
   return {
     reportId: randomHex(8), createdAt: new Date().toISOString(), url: doc.url, host: hostOf(doc.url), title: doc.title, lang: null,
-    promptVersion: PROMPT_VERSION, provider: providerId, model, textSha256: "", durationMs: 0, status, statusReasons_tr: reasons_tr,
+    promptVersion: PROMPT_VERSION, provider: providerId, model, servedModel: null,
+    meta: { temperature: null, refusalFallback: false, servedModelMismatch: false }, textSha256: "", durationMs: 0, status, statusReasons_tr: reasons_tr,
     score: 0, level: "Düşük", llmSuggestedScore: null, documentType: "unknown", legalPageConfidence: doc.legalPageConfidence,
     summary_tr: "", findings: [], manipulativeFindings: [], rejectedCount: 0, rejectedReasons: {}, rejectedDetails: [],
     proposedCount: 0, groundingRate: 1,

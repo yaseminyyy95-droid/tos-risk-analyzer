@@ -78,6 +78,15 @@ export interface SentinelHint {
   segmentId: string;
 }
 
+export interface ReportMeta {
+  /** gönderilen temperature; sağlayıcı/model desteklemiyorsa "provider_default" */
+  temperature: 0 | "provider_default" | null;
+  /** sunucu tarafı ret-fallback'i bu analizde açık mıydı */
+  refusalFallback: boolean;
+  /** yanıtlayan model istenenden farklı mı */
+  servedModelMismatch: boolean;
+}
+
 export interface VerifiedReport {
   reportId: string;
   createdAt: string;
@@ -88,7 +97,11 @@ export interface VerifiedReport {
   lang: string | null;
   promptVersion: string;
   provider: string;
+  /** istenen model */
   model: string;
+  /** API yanıtındaki gerçek model alanı (birden çok chunk farklı modelle yanıtlandıysa virgülle) */
+  servedModel: string | null;
+  meta: ReportMeta;
   textSha256: string;
   durationMs: number;
   status: ReportStatus;

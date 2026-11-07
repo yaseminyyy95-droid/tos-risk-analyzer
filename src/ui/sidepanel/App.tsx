@@ -190,7 +190,10 @@ export function SidePanelApp({ api = globalThis.chrome }: { api?: typeof chrome 
               </button>
             </div>
             <div class="meta" data-cy="report-meta">
-              {view.report.provider} · {view.report.model} · prompt {view.report.promptVersion} · {(view.report.durationMs / 1000).toFixed(1)} sn
+              {view.report.provider} · {view.report.model}
+              {view.report.servedModel && view.report.servedModel !== view.report.model ? ` (yanıtlayan: ${view.report.servedModel})` : ""} · prompt{" "}
+              {view.report.promptVersion} · {(view.report.durationMs / 1000).toFixed(1)} sn
+              {view.report.meta.temperature === "provider_default" ? " · temperature: sağlayıcı varsayılanı" : ""}
             </div>
           </div>
         </>

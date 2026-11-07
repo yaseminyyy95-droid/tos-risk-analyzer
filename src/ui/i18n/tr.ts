@@ -39,6 +39,8 @@ export const tr = {
   lowLegalConfidence: "Bu sayfa bir hukuki metin gibi görünmüyor; yine de analiz edebilirsiniz.",
   fromCache: "Önbellekten (7 gün içinde aynı metin analiz edildi).",
   developer: "Geliştirici: reddedilen iddiaların sebepleri",
+  modelMismatch: (requested: string, served: string) =>
+    `⚠ Bu raporu istenen model (${requested}) değil, ${served} üretti (ör. sağlayıcı tarafı yönlendirme veya ret-fallback).`,
   stages: {
     extracting: "Sayfa metni çıkarılıyor",
     sanitizing: "Metin temizleniyor ve bölümleniyor",

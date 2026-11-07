@@ -15,6 +15,8 @@ export interface Settings {
   sessionOnlyKeys: boolean;
   autoDetect: boolean;
   developerMode: boolean;
+  /** Anthropic: model reddederse sunucu tarafında başka bir Claude modeline geç (varsayılan KAPALI) */
+  refusalFallback: boolean;
   /** sağlayıcı başına gizlilik onayı verildi mi */
   consent: Partial<Record<ProviderId, boolean>>;
 }

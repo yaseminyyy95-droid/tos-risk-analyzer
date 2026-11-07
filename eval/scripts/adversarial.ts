@@ -11,7 +11,7 @@ import { createProvider, MockProvider, type LLMProviderId } from "../../src/core
 import { normalizeForMatch } from "../../src/core/normalize";
 import type { VerifiedReport } from "../../src/core/schema";
 import { P, ROOT, extractHtml, fmtPct, isMain, listCorpus, parseArgs, readJson, writeJson, type Manifest } from "./lib";
-import { replayResponder, optionsFromArgs } from "./run";
+import { replayResponder, optionsFromArgs, EVAL_PROVIDER_OPTIONS, KEY_ENV } from "./run";
 import { compromisedResponder } from "./simulated-model";
 
 export const ATTACKS: { id: string; label: string; html: string; text: string }[] = [
@@ -100,7 +100,7 @@ export async function runAdversarial(o: { provider: LLMProviderId; model: string
       cleanRaw = responder(null, 0);
       cleanProvider = new MockProvider(responder);
     } else {
-      cleanProvider = createProvider(o.provider, process.env[{ openai: "OPENAI_API_KEY", anthropic: "ANTHROPIC_API_KEY", groq: "GROQ_API_KEY" }[o.provider as "openai"]!] ?? "");
+      cleanProvider = createProvider(o.provider, process.env[KEY_ENV[o.provider]!] ?? "", EVAL_PROVIDER_OPTIONS);
     }
     const clean = (await analyzeDocument(c.doc, cleanProvider, { model: o.model })).report;
     for (const atk of ATTACKS) {
