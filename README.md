@@ -7,7 +7,7 @@ Kullanım koşulları, gizlilik politikası ve abonelik şartlarındaki riskli m
 
 ## Demo
 
-[`docs/demo/demo.mp4`](docs/demo/demo.mp4) (~15 sn) iki senaryo gösterir:
+[`docs/demo/demo.mp4`](docs/demo/demo.mp4) (~57 sn, her senaryo 2 sn'lik başlık ekranıyla başlar) iki senaryo gösterir:
 
 1. **Mutlu yol:** 6 bulgunun hepsi alıntıyla doğrulanır. Skor deterministik olarak hesaplanır (83). "Sayfada göster" kapalı akordeonu açar ve alıntıyı vurgular.
 2. **Belirsizlik:** Sayfada beyaz üstüne beyaz gizli talimat ve görünür bir "AI'ya not" paragrafı var. Model "ele geçirilmiş" gibi davranıyor. Gizli metin LLM'e hiç gitmez; uydurma güvenceler rapordan çıkarılır; skor modelin önerdiği 0 değil, doğrulanmış tahkim maddesinden gelen 35 olur; durum "Belirsiz — manuel inceleme önerilir" olarak işaretlenir.
@@ -222,7 +222,7 @@ npm run e2e:video:check
 npm run smoke
 ```
 
-- **Unit testler (Vitest + jsdom):** 230 test. `src/core` satır kapsamı %97.5. Kapsanan alanlar: şema, normalizasyon, segmentasyon, extractor (17 senaryo), görünürlük, injection (16 pozitif / 17 negatif), V0–V12 doğrulama, skor, durum, pipeline (happy + compromised), sağlayıcı istek gövdeleri ve header'ları, anahtar maskeleme, SW orkestratörü, UI (XSS yok, disclaimer her yerde) ve export.
+- **Unit testler (Vitest + jsdom):** 256 test. `src/core` satır kapsamı %97.6. Kapsanan alanlar: şema, normalizasyon, segmentasyon, extractor (17 senaryo), görünürlük, injection (18 pozitif / 29 negatif; negatiflerin 12'si meşru sertifika ve araç cümlesi), V0–V12 doğrulama, skor, durum, pipeline (happy + compromised), sağlayıcı istek gövdeleri ve header'ları, anahtar maskeleme, SW orkestratörü, UI (XSS yok, disclaimer her yerde), export, ret-fallback ayarı ve `servedModel`/temperature izlenebilirliği, eval eşleştirme ve `--from-raw` ön kontrolü.
 - **E2E (harness yaklaşımı):** Test araçları `chrome-extension://` sayfalarını ve side panel'i doğrudan otomatize edemez. Bu yüzden `e2e/harness.html` kullanılır: solda fixture ToS sayfası (iframe), sağda **gerçek** side panel uygulaması. `e2e/chrome-shim.ts`, `chrome.runtime/storage/tabs/scripting` API'lerini süreç içinde taklit eder ve **gerçek** SW orkestratörünü, extractor'ı (iframe DOM'u üzerinde), pipeline'ı ve `OpenAIProvider`'ı çalıştırır. Yalnızca `api.openai.com` çağrısı stub'lanır; test anahtarı `sk-test-cypress`'tir. LLM fixture'ları elle yazılmaz: `npm run fixtures:build` fixture HTML'ini gerçek extractor ve segmentasyondan geçirip gerçek segment ID'leriyle üretir.
 - **İki E2E katmanı (Playwright + Cypress):** Aynı harness, aynı iki senaryo, aynı `data-cy` seçicileri ve aynı assert'ler.
   - **Playwright** (`npm run e2e`, `tests/e2e/run-e2e.ts`): sistemde önceden kurulu Playwright ve Chromium ile çalışır. 2 senaryoda 29 kontrol vardır. Demo videosu bu katmandan üretilir (`docs/demo/demo.mp4`).

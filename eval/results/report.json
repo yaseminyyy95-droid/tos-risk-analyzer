@@ -5,7 +5,7 @@
     "model": "mock-replay",
     "repeats": 1,
     "promptVersion": "2026-11-v1",
-    "createdAt": "2026-11-07T19:42:15.450Z",
+    "createdAt": "2026-11-07T19:49:28.256Z",
     "synthetic": true,
     "label": "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez",
     "replayOf": "eval/runs/example-synthetic",
@@ -69,7 +69,7 @@
     ]
   },
   "totals": {
-    "latencyMs": 61,
+    "latencyMs": 47,
     "inputTokens": 7344,
     "outputTokens": 2381
   },

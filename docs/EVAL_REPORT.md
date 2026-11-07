@@ -26,7 +26,7 @@
 | Doğrulama sonrası grounding (invariant testi) | ✓ 21 doğrulanmış alıntının 0 tanesi metinde yok |
 | Severity uyumu (TP'lerde) | 88.9% |
 | Durum dağılımı | Kısmen doğrulandı: 3 |
-| Süre / token (girdi, çıktı) | 0.1 sn / 7344, 2381 |
+| Süre / token (girdi, çıktı) | 0.0 sn / 7344, 2381 |
 
 ### Kategori bazında recall
 
