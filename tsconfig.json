@@ -17,5 +17,5 @@
     "esModuleInterop": true,
     "noEmit": true
   },
-  "include": ["src", "e2e", "tests", "eval/scripts", "scripts", "*.ts"]
+  "include": ["src", "e2e", "tests", "eval/scripts", "scripts", "types", "*.ts"]
 }
