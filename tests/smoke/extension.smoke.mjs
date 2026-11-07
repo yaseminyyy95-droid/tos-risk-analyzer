@@ -4,6 +4,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import os from "node:os";
 import fs from "node:fs";
+import { URL } from "node:url";
 
 const require = createRequire(import.meta.url);
 function loadPlaywright() {
