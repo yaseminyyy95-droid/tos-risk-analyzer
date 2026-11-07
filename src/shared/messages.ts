@@ -104,3 +104,23 @@ export type ErrorCode =
   | "INTERNAL";
 
 export type { ExtractedDocument };
+
+// ---------------- Options / Popup → SW (runtime.sendMessage) ----------------
+const ProviderEnum = z.enum(["openai", "anthropic", "groq"]);
+export const ExtPageToSwSchema = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("SET_KEY"), provider: ProviderEnum, key: z.string().min(8).max(300), sessionOnly: z.boolean() }).strict(),
+  z.object({ type: z.literal("DELETE_KEY"), provider: ProviderEnum }).strict(),
+  z.object({ type: z.literal("TEST_KEY"), provider: ProviderEnum }).strict(),
+  z.object({ type: z.literal("KEY_STATUS") }).strict(),
+  z.object({ type: z.literal("CLEAR_CACHE") }).strict(),
+  z.object({ type: z.literal("OPEN_PANEL_AND_ANALYZE"), tabId: z.number().int(), windowId: z.number().int().optional() }).strict(),
+]);
+export type ExtPageToSw = z.infer<typeof ExtPageToSwSchema>;
+
+export interface KeyStatus {
+  provider: "openai" | "anthropic" | "groq";
+  hasKey: boolean;
+  /** yalnızca maske (sk-…abcd); anahtarın kendisi asla SW dışına çıkmaz */
+  masked: string | null;
+  sessionOnly: boolean;
+}

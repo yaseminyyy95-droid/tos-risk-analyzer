@@ -84,6 +84,8 @@ export interface VerifiedReport {
   url: string;
   host: string;
   title: string;
+  /** sayfanın lang özniteliği (alıntı blokları için) — doğrulanmış BCP-47 biçimi veya null */
+  lang: string | null;
   promptVersion: string;
   provider: string;
   model: string;

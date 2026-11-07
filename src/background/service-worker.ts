@@ -1,1 +1,3 @@
-chrome.runtime.onInstalled.addListener(() => {});
+import { initBackground } from "./orchestrator";
+
+initBackground(chrome);

@@ -50,6 +50,16 @@ export interface AnalyzeResult {
   diagnostics: AnalyzeDiagnostics;
 }
 
+export function safeLang(lang: string | null | undefined): string | null {
+  return lang && /^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/.test(lang) ? lang : null;
+}
+
+/** Önbellek anahtarı için: pipeline'ın LLM'e göndereceği kanonik metin (sanitize + segment). */
+export function canonicalTextOf(doc: ExtractedDocument, maxTotalChars?: number): string {
+  const { blocks } = sanitizeBlocks(doc.blocks);
+  return segmentBlocks(blocks, { isolate: isLikelyInjection, maxTotalChars }).canonicalText;
+}
+
 function hostOf(url: string): string {
   try {
     return new URL(url).host;
@@ -218,6 +228,7 @@ export async function analyzeDocument(doc: ExtractedDocument, provider: LLMProvi
     url: doc.url,
     host,
     title: doc.title.slice(0, 300),
+    lang: safeLang(doc.lang),
     promptVersion: PROMPT_VERSION,
     provider: provider.id,
     model: opts.model,
@@ -265,7 +276,7 @@ export function failedReport(doc: Pick<ExtractedDocument, "url" | "title" | "leg
     rejectedCount: 0, failedChunks: 0, totalChunks: 0,
   });
   return {
-    reportId: randomHex(8), createdAt: new Date().toISOString(), url: doc.url, host: hostOf(doc.url), title: doc.title,
+    reportId: randomHex(8), createdAt: new Date().toISOString(), url: doc.url, host: hostOf(doc.url), title: doc.title, lang: null,
     promptVersion: PROMPT_VERSION, provider: providerId, model, textSha256: "", durationMs: 0, status, statusReasons_tr: reasons_tr,
     score: 0, level: "Düşük", llmSuggestedScore: null, documentType: "unknown", legalPageConfidence: doc.legalPageConfidence,
     summary_tr: "", findings: [], manipulativeFindings: [], rejectedCount: 0, rejectedReasons: {}, rejectedDetails: [],
