@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-harness/
+coverage/
+eval/raw/*
+!eval/raw/.gitkeep
+test-results/
+tests/e2e/videos/
+*.log
+.DS_Store
