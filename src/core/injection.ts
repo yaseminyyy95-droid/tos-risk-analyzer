@@ -44,11 +44,11 @@ export const INJECTION_RULES: InjectionRule[] = [
   },
   {
     id: "tr_ignore_previous",
-    re: /(önceki|tüm|yukarıdaki)\s+(talimat|komut|kural)\w*\s+(yok say|görmezden gel|unut)/i,
+    re: /(önceki|tüm|yukarıdaki)\s+(talimat|komut|kural)\p{L}*\s+(yok say|görmezden gel|unut)/iu,
     weight: 0.9,
   },
-  { id: "tr_score_manipulation", re: /risk\s*skor\w*\s*(u|unu)?\s*(0|sıfır|düşük)/i, weight: 0.8 },
-  { id: "tr_addressing_ai", re: /(yapay zek[aâ]|asistan|model)\s*(olarak|sen)/i, weight: 0.5 },
+  { id: "tr_score_manipulation", re: /risk\s*skor\p{L}*\s*(u|unu)?\s*(0|sıfır|düşük)/iu, weight: 0.8 },
+  { id: "tr_addressing_ai", re: /(yapay zek[aâ]|asistan|model)\s*(olarak|sen)/iu, weight: 0.5 },
   { id: "fake_tags", re: /<\/?(system|instructions?|prompt|document)>/i, weight: 0.6 },
   // Ek kurallar (DECISIONS.md): doğrudan yapay zekâya hitap eden notlar
   {
@@ -60,6 +60,11 @@ export const INJECTION_RULES: InjectionRule[] = [
     id: "role_prefix",
     re: /(^|\n)\s*(⟦quoted⟧\s*)?(system|assistant|developer)\s*:/i,
     weight: 0.5,
+  },
+  {
+    id: "fake_segment_label",
+    re: /\[S·\d{2,4}\]/,
+    weight: 0.6,
   },
   {
     id: "fake_delimiter",
