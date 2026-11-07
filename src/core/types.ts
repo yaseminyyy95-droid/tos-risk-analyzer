@@ -34,3 +34,11 @@ export interface ExtractedDocument {
   stats: { totalChars: number; visibleChars: number; quarantinedChars: number };
   legalPageConfidence: number;
 }
+
+export type ProgressStage = "extracting" | "sanitizing" | "analyzing" | "verifying" | "done";
+export interface ProgressEvent {
+  stage: ProgressStage;
+  /** analyzing aşamasında: i / n chunk */
+  current?: number;
+  total?: number;
+}
