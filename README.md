@@ -224,8 +224,36 @@ npm run smoke
 
 - **Unit testler (Vitest + jsdom):** 230 test. `src/core` satır kapsamı %97.5. Kapsanan alanlar: şema, normalizasyon, segmentasyon, extractor (17 senaryo), görünürlük, injection (16 pozitif / 17 negatif), V0–V12 doğrulama, skor, durum, pipeline (happy + compromised), sağlayıcı istek gövdeleri ve header'ları, anahtar maskeleme, SW orkestratörü, UI (XSS yok, disclaimer her yerde) ve export.
 - **E2E (harness yaklaşımı):** Test araçları `chrome-extension://` sayfalarını ve side panel'i doğrudan otomatize edemez. Bu yüzden `e2e/harness.html` kullanılır: solda fixture ToS sayfası (iframe), sağda **gerçek** side panel uygulaması. `e2e/chrome-shim.ts`, `chrome.runtime/storage/tabs/scripting` API'lerini süreç içinde taklit eder ve **gerçek** SW orkestratörünü, extractor'ı (iframe DOM'u üzerinde), pipeline'ı ve `OpenAIProvider`'ı çalıştırır. Yalnızca `api.openai.com` çağrısı stub'lanır; test anahtarı `sk-test-cypress`'tir. LLM fixture'ları elle yazılmaz: `npm run fixtures:build` fixture HTML'ini gerçek extractor ve segmentasyondan geçirip gerçek segment ID'leriyle üretir.
-- **Cypress yerine Playwright:** Cypress binary'si bu ortamın ağ politikası nedeniyle indirilemedi ve ağ ayarı değiştirilmedi. E2E ve demo videosu, sistemde önceden kurulu Playwright ve Chromium ile çalışır; projeye yeni bağımlılık eklenmedi. Seçiciler prompt'taki `data-cy` adlarını korur. 2 senaryoda 26 kontrol vardır; video ffmpeg ile mp4'e çevrilir, `e2e:video:check` süresini ffprobe ile ölçer (≤ 90 sn) ve `docs/demo/demo.mp4`'e kopyalar.
+- **İki E2E katmanı (Playwright + Cypress):** Aynı harness, aynı iki senaryo, aynı `data-cy` seçicileri ve aynı assert'ler.
+  - **Playwright** (`npm run e2e`, `tests/e2e/run-e2e.ts`): sistemde önceden kurulu Playwright ve Chromium ile çalışır. 2 senaryoda 29 kontrol vardır. Demo videosu bu katmandan üretilir (`docs/demo/demo.mp4`).
+  - **Cypress** (`npm run e2e:cypress`, `cypress/e2e/demo.cy.ts`): LLM `cy.intercept` ile stub'lanır. Geliştirme ortamında Cypress binary'si `download.cypress.io` erişimi olmadığı için indirilemedi; spec burada yalnızca tip kontrolünden geçti (`npm run typecheck:cypress`). Kendi makinenizde çalıştırma adımları aşağıda.
+  - Video kontrolü: `e2e:video:check` (Playwright) ve `e2e:cypress:video:check` (Cypress → `docs/demo/demo-cypress.mp4`) süreyi ffprobe ile ölçer ve **40–90 sn** aralığı dışında hata verir.
 - **Smoke:** `dist/` paketlenmemiş uzantı olarak Chromium'a yüklenir; SW, side panel, options ve popup sayfaları JS hatası olmadan açılır ve disclaimer içerir.
+
+## Cypress'i kendi makinende çalıştırma
+
+Cypress binary'si `download.cypress.io`'dan iner; bu adrese erişimi olan bir makinede:
+
+```bash
+npm ci
+```
+
+```bash
+npx cypress verify
+```
+
+```bash
+npm run e2e:cypress
+```
+
+```bash
+npm run e2e:cypress:video:check
+```
+
+- `npm ci` Cypress binary'sini `~/.cache/Cypress` altına indirir. `npx cypress verify` "Verified Cypress!" demeli; demiyorsa `npx cypress install` çalıştırın.
+- `e2e:cypress` harness'ı derler, `start-server-and-test` ile `vite preview`'u 4173 portunda başlatır ve `cypress run --spec cypress/e2e/demo.cy.ts` çalıştırır. Video `cypress/videos/demo.cy.ts.mp4` olarak kaydedilir (`video: true`, 1440×900).
+- `e2e:cypress:video:check` süreyi 40–90 sn aralığında doğrular ve videoyu `docs/demo/demo-cypress.mp4` olarak kopyalar.
+- Etkileşimli mod için `npm run harness:build && npm run harness:serve` çalıştırın, ayrı bir terminalde `npx cypress open` açın.
 
 ## Benchmark
 

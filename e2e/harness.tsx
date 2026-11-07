@@ -12,6 +12,28 @@ const params = new URLSearchParams(location.search);
 const page = (params.get("page") ?? "acme-tos").replace(/[^a-z0-9-]/gi, "");
 const iframe = document.getElementById("page") as HTMLIFrameElement;
 
+// Demo videosu için 2 sn'lik başlık ekranı: ?scenario=1|2
+const TITLES: Record<string, [string, string]> = {
+  "1": ["Senaryo 1: Mutlu yol", "Risk raporu, orijinal metinde doğrulanmış alıntılarla üretilir"],
+  "2": ["Senaryo 2: Injection + belirsizlik", "Gizli talimat, uydurma alıntılar ve ele geçirilmiş model"],
+};
+const scenario = params.get("scenario");
+const titleCard = document.getElementById("title-card")!;
+if (scenario && TITLES[scenario]) {
+  const [h, sub] = TITLES[scenario]!;
+  const strong = document.createElement("div");
+  strong.textContent = h;
+  const small = document.createElement("small");
+  small.textContent = sub;
+  titleCard.replaceChildren(strong, small);
+  titleCard.classList.remove("hidden");
+  titleCard.setAttribute("data-state", "visible");
+  setTimeout(() => {
+    titleCard.classList.add("hidden");
+    titleCard.setAttribute("data-state", "hidden");
+  }, Number(params.get("titleMs") ?? 2000));
+}
+
 iframe.addEventListener(
   "load",
   async () => {

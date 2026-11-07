@@ -9,3 +9,6 @@ tests/e2e/videos/
 *.log
 .DS_Store
 eval/runs/_last/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/

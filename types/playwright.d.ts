@@ -18,6 +18,7 @@ declare module "playwright" {
     count(): Promise<number>;
     click(): Promise<void>;
     first(): Locator;
+    nth(i: number): Locator;
     filter(o: { hasText: string }): Locator;
     locator(sel: string): Locator;
     scrollIntoViewIfNeeded(): Promise<void>;
