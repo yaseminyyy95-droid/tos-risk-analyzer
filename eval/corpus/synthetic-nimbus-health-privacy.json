@@ -1,0 +1,180 @@
+{
+  "id": "synthetic-nimbus-health-privacy",
+  "company": "Nimbus Health (kurgusal)",
+  "docType": "privacy_policy",
+  "synthetic": true,
+  "source": {
+    "url": null,
+    "file": "eval/synthetic/synthetic-nimbus-health-privacy.html"
+  },
+  "retrievedAt": "2026-11-07T17:35:02.264Z",
+  "sha256": "ea5e16af39346fa8242dce05498160d65aea4f2ab4dfae680686267441f05c79",
+  "extractor": "content/extractor@b296120",
+  "extractorEnv": "chromium",
+  "doc": {
+    "url": "https://synthetic.example/legal/synthetic-nimbus-health-privacy",
+    "title": "Nimbus Health Privacy Policy",
+    "lang": "en",
+    "extractedAt": "2026-11-07T17:35:02.225Z",
+    "blocks": [
+      {
+        "text": "Nimbus Health App — Privacy Policy",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy"
+        ],
+        "tag": "h1",
+        "visibility": "visible"
+      },
+      {
+        "text": "SYNTHETIC DOCUMENT. Nimbus Health is a fictional fitness and wellness application invented for evaluation purposes. This Privacy Policy explains how Nimbus Health Ltd. collects, uses and shares personal data when you use the Nimbus mobile app and connected wearable devices.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "1. Data We Collect",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "1. Data We Collect"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We collect the information you provide when you register, such as your name, email address, date of birth and gender. When you connect a wearable device, we collect health and fitness data including heart rate, sleep patterns, step counts, menstrual cycle information and blood oxygen levels.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "1. Data We Collect"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "To unlock the app with your face, we collect and store a faceprint derived from photos taken by your device camera, and we may use these facial geometry measurements to improve our recognition algorithms.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "1. Data We Collect"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "2. How We Use Data",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "2. How We Use Data"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We use your data to provide the Service, to give you personalized coaching recommendations and to keep your account secure. We also use de-identified and aggregated health data, as well as the content of your coaching chats, to train our machine learning models and to develop new commercial products.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "2. How We Use Data"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "3. Sharing",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "3. Sharing"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We share your health and fitness data with insurance partners and employers who sponsor your Nimbus subscription, who may use it to adjust wellness program rewards. We may also disclose personal data to service providers who process it on our behalf under written contracts.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "3. Sharing"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "4. Retention",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "4. Retention"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We retain your personal data for as long as we consider necessary for our business purposes, which may extend indefinitely after you stop using the Service, and backup copies may persist beyond that period.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "4. Retention"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "5. Children",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "5. Children"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "Nimbus is not intended for children under 13, and we do not knowingly collect data from children under 13. If you believe a child has provided data to us, please contact us so that we can delete it.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "5. Children"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "6. Changes",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "6. Changes"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We may update this Privacy Policy from time to time, and the updated version will be effective as soon as it is posted in the app; we may not notify you individually of changes.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "6. Changes"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "7. Your Rights",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "7. Your Rights"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "Depending on where you live, you may have the right to access, correct or delete your personal data. You can exercise these rights from the privacy section of the app settings.",
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "7. Your Rights"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      }
+    ],
+    "quarantined": [],
+    "stats": {
+      "totalChars": 2229,
+      "visibleChars": 2229,
+      "quarantinedChars": 0
+    },
+    "legalPageConfidence": 0.8
+  }
+}

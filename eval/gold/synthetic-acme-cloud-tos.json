@@ -1,0 +1,94 @@
+{
+  "docId": "synthetic-acme-cloud-tos",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": true,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "arbitration_class_waiver",
+      "severity": "critical",
+      "anchorQuote": "binding individual arbitration, and you waive any right to a jury trial",
+      "acceptableCategories": [
+        "arbitration_class_waiver",
+        "jurisdiction_governing_law"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "data_sale_or_sharing",
+      "severity": "critical",
+      "anchorQuote": "we may sell your personal information",
+      "acceptableCategories": [
+        "data_sale_or_sharing",
+        "tracking_profiling"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "auto_renewal",
+      "severity": "high",
+      "anchorQuote": "Your subscription will automatically renew at the end of each billing period",
+      "acceptableCategories": [
+        "auto_renewal",
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "cancellation_refund",
+      "severity": "high",
+      "anchorQuote": "All payments are non-refundable, including for partially used subscription periods",
+      "acceptableCategories": [
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "a perpetual, irrevocable, worldwide, royalty-free license",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "ai_training_use",
+      "severity": "high",
+      "anchorQuote": "to train our AI models and improve our machine learning systems",
+      "acceptableCategories": [
+        "ai_training_use",
+        "data_retention"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "We may modify these Terms at any time without notice",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "limited to the amount you paid to Acme in the three months",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "cancellation_refund",
+      "severity": "medium",
+      "anchorQuote": "Cancellation can only be completed by contacting our billing team through the support portal",
+      "acceptableCategories": [
+        "cancellation_refund",
+        "auto_renewal"
+      ]
+    }
+  ]
+}

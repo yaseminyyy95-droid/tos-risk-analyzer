@@ -1,0 +1,100 @@
+{
+  "notice": "Gerçek şirket metinleri yalnızca araştırma/eğitim amaçlı değerlendirme için, kaynak URL + erişim tarihi + SHA-256 ile kullanılır. Ham HTML (eval/raw/) repoya eklenmez. URL'ler kullanıcı tarafından doğrulanmalıdır; siteler metinlerini ve adreslerini değiştirebilir. Bu kayıtlar bu ortamda çekilmedi (ağ politikası şirket sitelerine izin vermiyor) — bkz. eval/README.md.",
+  "documents": [
+    {
+      "id": "zoom-tos",
+      "company": "Zoom",
+      "docType": "terms_of_service",
+      "url": "https://www.zoom.com/en/trust/terms/",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    },
+    {
+      "id": "spotify-tou",
+      "company": "Spotify",
+      "docType": "terms_of_service",
+      "url": "https://www.spotify.com/us/legal/end-user-agreement/",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    },
+    {
+      "id": "tiktok-tos-us",
+      "company": "TikTok",
+      "docType": "terms_of_service",
+      "url": "https://www.tiktok.com/legal/page/us/terms-of-service/en",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    },
+    {
+      "id": "netflix-tou",
+      "company": "Netflix",
+      "docType": "terms_of_service",
+      "url": "https://help.netflix.com/legal/termsofuse",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    },
+    {
+      "id": "reddit-ua",
+      "company": "Reddit",
+      "docType": "terms_of_service",
+      "url": "https://redditinc.com/policies/user-agreement",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    },
+    {
+      "id": "spotify-privacy",
+      "company": "Spotify",
+      "docType": "privacy_policy",
+      "url": "https://www.spotify.com/us/legal/privacy-policy/",
+      "retrievedAt": null,
+      "sha256": null,
+      "extractor": null,
+      "status": "not_fetched"
+    }
+  ],
+  "synthetic": [
+    {
+      "id": "synthetic-acme-cloud-tos",
+      "company": "Acme Cloud (kurgusal)",
+      "docType": "terms_of_service",
+      "url": null,
+      "file": "eval/synthetic/synthetic-acme-cloud-tos.html",
+      "retrievedAt": "2026-11-07T17:35:01.977Z",
+      "sha256": "ca80c6fc6337db01235032e47f32578ba0a42ea517335a5ca2177775d6c866d5",
+      "extractor": "content/extractor@b296120",
+      "synthetic": true
+    },
+    {
+      "id": "synthetic-brightstream-subscription",
+      "company": "BrightStream (kurgusal)",
+      "docType": "subscription_terms",
+      "url": null,
+      "file": "eval/synthetic/synthetic-brightstream-subscription.html",
+      "retrievedAt": "2026-11-07T17:35:02.124Z",
+      "sha256": "d481e2b6a073d088c553b8ad862b8458c4b50956cfad709806b83e875c0cfba8",
+      "extractor": "content/extractor@b296120",
+      "synthetic": true
+    },
+    {
+      "id": "synthetic-nimbus-health-privacy",
+      "company": "Nimbus Health (kurgusal)",
+      "docType": "privacy_policy",
+      "url": null,
+      "file": "eval/synthetic/synthetic-nimbus-health-privacy.html",
+      "retrievedAt": "2026-11-07T17:35:02.264Z",
+      "sha256": "ea5e16af39346fa8242dce05498160d65aea4f2ab4dfae680686267441f05c79",
+      "extractor": "content/extractor@b296120",
+      "synthetic": true
+    }
+  ]
+}

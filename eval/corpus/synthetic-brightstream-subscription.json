@@ -1,0 +1,198 @@
+{
+  "id": "synthetic-brightstream-subscription",
+  "company": "BrightStream (kurgusal)",
+  "docType": "subscription_terms",
+  "synthetic": true,
+  "source": {
+    "url": null,
+    "file": "eval/synthetic/synthetic-brightstream-subscription.html"
+  },
+  "retrievedAt": "2026-11-07T17:35:02.124Z",
+  "sha256": "d481e2b6a073d088c553b8ad862b8458c4b50956cfad709806b83e875c0cfba8",
+  "extractor": "content/extractor@b296120",
+  "extractorEnv": "chromium",
+  "doc": {
+    "url": "https://synthetic.example/legal/synthetic-brightstream-subscription",
+    "title": "BrightStream Subscription Terms",
+    "lang": "en",
+    "extractedAt": "2026-11-07T17:35:02.083Z",
+    "blocks": [
+      {
+        "text": "BrightStream Music — Subscription Terms",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms"
+        ],
+        "tag": "h1",
+        "visibility": "visible"
+      },
+      {
+        "text": "SYNTHETIC DOCUMENT. BrightStream is a fictional music streaming service invented for evaluation purposes. These Subscription Terms apply to all paid BrightStream plans, including Individual, Duo and Family plans, and supplement the BrightStream General Terms of Use.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "1. Plans and Trials",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "1. Plans and Trials"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "New members may be offered a free trial of a paid plan. At the end of the trial, your plan converts into a paid subscription and the monthly fee is charged to the payment method you provided, unless you cancel before the trial ends. Only one trial is available per person and per payment method, and we may refuse a trial if we believe it is being misused.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "1. Plans and Trials"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "Family plans allow up to six accounts living at the same address. The plan manager is responsible for confirming that all members live at the same address, and we may verify the address using approximate location data collected from members’ devices.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "1. Plans and Trials"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "2. Renewal and Cancellation",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "2. Renewal and Cancellation"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "Your BrightStream subscription renews automatically every month and you authorize us to charge the subscription fee to your payment method on each renewal date until you cancel. You can cancel at any time from the account page, and cancellation takes effect at the end of the current billing period.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "2. Renewal and Cancellation"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "Subscription fees are non-refundable and we do not provide refunds or credits for partial months, unused features or periods in which you did not listen to music, except where required by law.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "2. Renewal and Cancellation"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "3. Price Changes",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "3. Price Changes"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We may change the price of any plan at our sole discretion, and the new price will apply from your next billing period after we notify you by email at least 7 days in advance. If you do not agree to the price change, you must cancel before it takes effect.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "3. Price Changes"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "4. Listening Data and Personalization",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "4. Listening Data and Personalization"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We collect information about the songs you play, skip and save, the time and place you listen, and the devices you use. We use this listening history to build a profile of your tastes and moods, and we share these inferred interest segments with advertising partners to show you targeted ads, including on other websites and apps.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "4. Listening Data and Personalization"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "Voice features are optional. If you enable voice search, we record your voice commands and may create a voiceprint to recognize you across devices; recordings are kept until you delete them in your privacy settings.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "4. Listening Data and Personalization"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "5. Account Suspension",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "5. Account Suspension"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "We may suspend or terminate your account at any time, for any reason or no reason, including if we suspect that your account is being shared outside your household, and we are not obliged to refund any prepaid fees in that case.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "5. Account Suspension"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "6. Liability",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "6. Liability"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "To the fullest extent permitted by law, BrightStream will not be liable for any loss of playlists, downloads or listening history, and our total liability to you for all claims is limited to five US dollars.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "6. Liability"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      },
+      {
+        "text": "7. Contact",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "7. Contact"
+        ],
+        "tag": "h2",
+        "visibility": "visible"
+      },
+      {
+        "text": "For questions about these Subscription Terms, please use the contact form in the BrightStream app.",
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "7. Contact"
+        ],
+        "tag": "p",
+        "visibility": "visible"
+      }
+    ],
+    "quarantined": [],
+    "stats": {
+      "totalChars": 2878,
+      "visibleChars": 2878,
+      "quarantinedChars": 0
+    },
+    "legalPageConfidence": 0.9
+  }
+}

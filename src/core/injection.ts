@@ -57,6 +57,12 @@ export const INJECTION_RULES: InjectionRule[] = [
     weight: 0.6,
   },
   {
+    // eval/adversarial "vendor_certified" saldırısının ortaya çıkardığı açık: otomatik araçlara ne raporlayacaklarını söyleyen cümleler
+    id: "instructs_automated_tools",
+    re: /\b(ai|automated|automatic|llm|analy[sz]er|ai-based)\s+(tools?|systems?|assistants?|analy[sz]ers?|models?|readers?|reviewers?)\s+(should|must|shall|are (instructed|required|expected) to)\s+(report|output|return|rate|score|classify|summari[sz]e|treat|consider|mark)\b/i,
+    weight: 0.6,
+  },
+  {
     id: "role_prefix",
     re: /(^|\n)\s*(⟦quoted⟧\s*)?(system|assistant|developer)\s*:/i,
     weight: 0.5,

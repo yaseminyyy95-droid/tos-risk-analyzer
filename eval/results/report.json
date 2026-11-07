@@ -1,0 +1,181 @@
+{
+  "run": "eval/runs/_last",
+  "meta": {
+    "provider": "mock",
+    "model": "mock-replay",
+    "repeats": 1,
+    "promptVersion": "2026-11-v1",
+    "createdAt": "2026-11-07T17:39:27.287Z",
+    "synthetic": true,
+    "label": "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez",
+    "replayOf": "eval/runs/example-synthetic",
+    "docs": [
+      "synthetic-acme-cloud-tos",
+      "synthetic-brightstream-subscription",
+      "synthetic-nimbus-health-privacy"
+    ]
+  },
+  "documents": 3,
+  "micro": {
+    "precision": 0.8571428571428571,
+    "recall": 0.782608695652174,
+    "f1": 0.8181818181818182
+  },
+  "macro": {
+    "precision": 0.8611111111111112,
+    "recall": 0.7916666666666666,
+    "f1": 0.8241830065359478
+  },
+  "adjustedPrecision": 0.8571428571428571,
+  "preVerificationHallucinationRate": 0.16,
+  "postVerificationGrounding": {
+    "verified": 21,
+    "violations": 0,
+    "invariantHolds": true
+  },
+  "severityAgreement": 0.8888888888888888,
+  "categoryRecall": {
+    "arbitration_class_waiver": 1,
+    "data_sale_or_sharing": 1,
+    "auto_renewal": 0.6666666666666666,
+    "cancellation_refund": 0.6666666666666666,
+    "content_license_ip": 1,
+    "ai_training_use": 1,
+    "unilateral_changes": 0.5,
+    "liability_limitation": 0.5,
+    "price_change": 1,
+    "tracking_profiling": 1,
+    "sensitive_biometric_data": 0.6666666666666666,
+    "account_termination": 1,
+    "data_retention": 1
+  },
+  "statusDistribution": {
+    "PARTIAL": 3
+  },
+  "repeatsF1": {
+    "synthetic-acme-cloud-tos": [
+      0.7058823529411765
+    ],
+    "synthetic-brightstream-subscription": [
+      0.9333333333333333
+    ],
+    "synthetic-nimbus-health-privacy": [
+      0.8333333333333334
+    ]
+  },
+  "totals": {
+    "latencyMs": 36,
+    "inputTokens": 7344,
+    "outputTokens": 2381
+  },
+  "perDoc": [
+    {
+      "docId": "synthetic-acme-cloud-tos",
+      "gold": 9,
+      "annotationStatus": "draft",
+      "proposed": 10,
+      "verified": 8,
+      "rejected": 2,
+      "tp": 6,
+      "fp": 2,
+      "fn": 3,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "f1": 0.7058823529411765,
+      "hallucinationRate": 0.2,
+      "score": 85,
+      "llmSuggestedScore": 85,
+      "status": "PARTIAL",
+      "fnItems": [
+        {
+          "goldId": "G7",
+          "category": "unilateral_changes",
+          "anchorQuote": "We may modify these Terms at any time without notice"
+        },
+        {
+          "goldId": "G8",
+          "category": "liability_limitation",
+          "anchorQuote": "limited to the amount you paid to Acme in the three months"
+        },
+        {
+          "goldId": "G9",
+          "category": "cancellation_refund",
+          "anchorQuote": "Cancellation can only be completed by contacting our billing team through the support portal"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C1F8",
+          "category": "other",
+          "quote": "limited to the amount you paid to Acme in the three months"
+        },
+        {
+          "findingId": "C1F10",
+          "category": "account_termination",
+          "quote": "we may suspend paid features until the outstanding balance is paid"
+        }
+      ],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "synthetic-brightstream-subscription",
+      "gold": 8,
+      "annotationStatus": "draft",
+      "proposed": 8,
+      "verified": 7,
+      "rejected": 1,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1,
+      "recall": 0.875,
+      "f1": 0.9333333333333333,
+      "hallucinationRate": 0.125,
+      "score": 75,
+      "llmSuggestedScore": 70,
+      "status": "PARTIAL",
+      "fnItems": [
+        {
+          "goldId": "G8",
+          "category": "auto_renewal",
+          "anchorQuote": "your plan converts into a paid subscription and the monthly fee is charged"
+        }
+      ],
+      "fpItems": [],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "synthetic-nimbus-health-privacy",
+      "gold": 6,
+      "annotationStatus": "draft",
+      "proposed": 7,
+      "verified": 6,
+      "rejected": 1,
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "f1": 0.8333333333333334,
+      "hallucinationRate": 0.14285714285714285,
+      "score": 67,
+      "llmSuggestedScore": 88,
+      "status": "PARTIAL",
+      "fnItems": [
+        {
+          "goldId": "G1",
+          "category": "sensitive_biometric_data",
+          "anchorQuote": "we collect and store a faceprint derived from photos taken by your device camera"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C1F7",
+          "category": "data_sale_or_sharing",
+          "quote": "We may also disclose personal data to service providers who process it on our behalf"
+        }
+      ],
+      "unlocatedGold": []
+    }
+  ]
+}

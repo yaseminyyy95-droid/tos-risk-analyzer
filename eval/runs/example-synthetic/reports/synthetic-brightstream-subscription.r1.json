@@ -1,0 +1,271 @@
+{
+  "docId": "synthetic-brightstream-subscription",
+  "repeat": 1,
+  "report": {
+    "reportId": "cd5ac9f8890a1ede",
+    "createdAt": "2026-11-07T17:37:25.607Z",
+    "url": "https://synthetic.example/legal/synthetic-brightstream-subscription",
+    "host": "synthetic.example",
+    "title": "BrightStream Subscription Terms",
+    "lang": "en",
+    "promptVersion": "2026-11-v1",
+    "provider": "mock",
+    "model": "simulated-model",
+    "textSha256": "d481e2b6a073d088c553b8ad862b8458c4b50956cfad709806b83e875c0cfba8",
+    "durationMs": 6,
+    "status": "PARTIAL",
+    "statusReasons_tr": [
+      "1 iddia orijinal metinde doğrulanamadığı için çıkarıldı."
+    ],
+    "score": 75,
+    "level": "Kritik",
+    "llmSuggestedScore": 70,
+    "documentType": "subscription_terms",
+    "legalPageConfidence": 0.9,
+    "summary_tr": "SENTETİK örnek: bu özet simüle model tarafından üretildi ve gerçek bir LLM çıktısı değildir.",
+    "findings": [
+      {
+        "category": "auto_renewal",
+        "severity": "high",
+        "title_tr": "Otomatik yenileme",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "Your BrightStream subscription renews automatically every month",
+        "segment_id": "S003",
+        "confidence": 0.8,
+        "id": "C1F1",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "2. Renewal and Cancellation"
+        ]
+      },
+      {
+        "category": "cancellation_refund",
+        "severity": "high",
+        "title_tr": "İptal ve iade kısıtı",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "Subscription fees are non-refundable and we do not provide refunds or credits for partial months",
+        "segment_id": "S003",
+        "confidence": 0.8,
+        "id": "C1F2",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "2. Renewal and Cancellation"
+        ]
+      },
+      {
+        "category": "price_change",
+        "severity": "high",
+        "title_tr": "Tek taraflı fiyat değişikliği",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "We may change the price of any plan at our sole discretion",
+        "segment_id": "S004",
+        "confidence": 0.8,
+        "id": "C1F3",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "3. Price Changes"
+        ]
+      },
+      {
+        "category": "tracking_profiling",
+        "severity": "high",
+        "title_tr": "Profilleme ve hedefli reklam",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "we share these inferred interest segments with advertising partners to show you targeted ads",
+        "segment_id": "S005",
+        "confidence": 0.8,
+        "id": "C1F4",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "4. Listening Data and Personalization"
+        ]
+      },
+      {
+        "category": "sensitive_biometric_data",
+        "severity": "high",
+        "title_tr": "Hassas veya biyometrik veri",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "may create a voiceprint to recognize you across devices",
+        "segment_id": "S005",
+        "confidence": 0.8,
+        "id": "C1F5",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "4. Listening Data and Personalization"
+        ]
+      },
+      {
+        "category": "account_termination",
+        "severity": "high",
+        "title_tr": "Hesabın tek taraflı kapatılması",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "We may suspend or terminate your account at any time, for any reason or no reason",
+        "segment_id": "S006",
+        "confidence": 0.8,
+        "id": "C1F6",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "5. Account Suspension"
+        ]
+      },
+      {
+        "category": "liability_limitation",
+        "severity": "low",
+        "title_tr": "Sorumluluk sınırlaması",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "our total liability to you for all claims is limited to five US dollars",
+        "segment_id": "S007",
+        "confidence": 0.8,
+        "id": "C1F7",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "BrightStream Music — Subscription Terms",
+          "6. Liability"
+        ]
+      }
+    ],
+    "manipulativeFindings": [],
+    "rejectedCount": 1,
+    "rejectedReasons": {
+      "quote_not_found": 1
+    },
+    "rejectedDetails": [
+      {
+        "reason": "quote_not_found",
+        "category": "tracking_profiling",
+        "closestMatchPreview": " with advertis"
+      }
+    ],
+    "proposedCount": 8,
+    "groundingRate": 0.875,
+    "injection": {
+      "heuristicFlaggedSegments": [],
+      "flaggedPreviews": [],
+      "llmSuspected": false,
+      "hiddenBlocksRemoved": 0,
+      "hiddenBlocksWithInstructions": 0,
+      "modelPossiblyInfluenced": false
+    },
+    "sentinelHints": [],
+    "coverage": {
+      "segments": 8,
+      "chunks": 1,
+      "truncated": false,
+      "visibleChars": 2878
+    },
+    "uncertaintyNotes_tr": "Sentetik değerlendirme verisi.",
+    "disclaimer_tr": "Bu uygulama hukuki tavsiye vermez. Sonuçlar otomatik üretilmiştir ve hatalı veya eksik olabilir; önemli kararlar için bir hukuk profesyoneline danışın."
+  },
+  "canonicalText": "BrightStream Music — Subscription Terms\nSYNTHETIC DOCUMENT. BrightStream is a fictional music streaming service invented for evaluation purposes. These Subscription Terms apply to all paid BrightStream plans, including Individual, Duo and Family plans, and supplement the BrightStream General Terms of Use.\n\n1. Plans and Trials\nNew members may be offered a free trial of a paid plan. At the end of the trial, your plan converts into a paid subscription and the monthly fee is charged to the payment method you provided, unless you cancel before the trial ends. Only one trial is available per person and per payment method, and we may refuse a trial if we believe it is being misused.\nFamily plans allow up to six accounts living at the same address. The plan manager is responsible for confirming that all members live at the same address, and we may verify the address using approximate location data collected from members’ devices.\n\n2. Renewal and Cancellation\nYour BrightStream subscription renews automatically every month and you authorize us to charge the subscription fee to your payment method on each renewal date until you cancel. You can cancel at any time from the account page, and cancellation takes effect at the end of the current billing period.\nSubscription fees are non-refundable and we do not provide refunds or credits for partial months, unused features or periods in which you did not listen to music, except where required by law.\n\n3. Price Changes\nWe may change the price of any plan at our sole discretion, and the new price will apply from your next billing period after we notify you by email at least 7 days in advance. If you do not agree to the price change, you must cancel before it takes effect.\n\n4. Listening Data and Personalization\nWe collect information about the songs you play, skip and save, the time and place you listen, and the devices you use. We use this listening history to build a profile of your tastes and moods, and we share these inferred interest segments with advertising partners to show you targeted ads, including on other websites and apps.\nVoice features are optional. If you enable voice search, we record your voice commands and may create a voiceprint to recognize you across devices; recordings are kept until you delete them in your privacy settings.\n\n5. Account Suspension\nWe may suspend or terminate your account at any time, for any reason or no reason, including if we suspect that your account is being shared outside your household, and we are not obliged to refund any prepaid fees in that case.\n\n6. Liability\nTo the fullest extent permitted by law, BrightStream will not be liable for any loss of playlists, downloads or listening history, and our total liability to you for all claims is limited to five US dollars.\n\n7. Contact\nFor questions about these Subscription Terms, please use the contact form in the BrightStream app.",
+  "findingSpans": [
+    {
+      "id": "C1F1",
+      "start": 965,
+      "end": 1028
+    },
+    {
+      "id": "C1F2",
+      "start": 1265,
+      "end": 1361
+    },
+    {
+      "id": "C1F3",
+      "start": 1476,
+      "end": 1534
+    },
+    {
+      "id": "C1F4",
+      "start": 1971,
+      "end": 2063
+    },
+    {
+      "id": "C1F5",
+      "start": 2194,
+      "end": 2249
+    },
+    {
+      "id": "C1F6",
+      "start": 2342,
+      "end": 2423
+    },
+    {
+      "id": "C1F7",
+      "start": 2720,
+      "end": 2791
+    }
+  ],
+  "segments": [
+    {
+      "id": "S001",
+      "charStart": 0,
+      "charEnd": 306
+    },
+    {
+      "id": "S002",
+      "charStart": 308,
+      "charEnd": 935
+    },
+    {
+      "id": "S003",
+      "charStart": 937,
+      "charEnd": 1457
+    },
+    {
+      "id": "S004",
+      "charStart": 1459,
+      "charEnd": 1732
+    },
+    {
+      "id": "S005",
+      "charStart": 1734,
+      "charEnd": 2318
+    },
+    {
+      "id": "S006",
+      "charStart": 2320,
+      "charEnd": 2570
+    },
+    {
+      "id": "S007",
+      "charStart": 2572,
+      "charEnd": 2792
+    },
+    {
+      "id": "S008",
+      "charStart": 2794,
+      "charEnd": 2903
+    }
+  ],
+  "rejected": [
+    {
+      "reason": "quote_not_found",
+      "category": "tracking_profiling",
+      "quote": "Your listening data is never shared with advertisers or partners."
+    }
+  ],
+  "usage": {
+    "inputTokens": 1651,
+    "outputTokens": 776
+  },
+  "latencyMs": 6
+}

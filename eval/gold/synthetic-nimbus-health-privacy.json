@@ -1,0 +1,62 @@
+{
+  "docId": "synthetic-nimbus-health-privacy",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": true,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "sensitive_biometric_data",
+      "severity": "critical",
+      "anchorQuote": "we collect and store a faceprint derived from photos taken by your device camera",
+      "acceptableCategories": [
+        "sensitive_biometric_data"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "ai_training_use",
+      "severity": "high",
+      "anchorQuote": "the content of your coaching chats, to train our machine learning models",
+      "acceptableCategories": [
+        "ai_training_use"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "data_sale_or_sharing",
+      "severity": "critical",
+      "anchorQuote": "We share your health and fitness data with insurance partners and employers",
+      "acceptableCategories": [
+        "data_sale_or_sharing"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "data_retention",
+      "severity": "high",
+      "anchorQuote": "which may extend indefinitely after you stop using the Service",
+      "acceptableCategories": [
+        "data_retention"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "we may not notify you individually of changes",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "sensitive_biometric_data",
+      "severity": "medium",
+      "anchorQuote": "menstrual cycle information and blood oxygen levels",
+      "acceptableCategories": [
+        "sensitive_biometric_data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "docId": "synthetic-brightstream-subscription",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": true,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "auto_renewal",
+      "severity": "high",
+      "anchorQuote": "Your BrightStream subscription renews automatically every month",
+      "acceptableCategories": [
+        "auto_renewal"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "cancellation_refund",
+      "severity": "high",
+      "anchorQuote": "Subscription fees are non-refundable and we do not provide refunds or credits for partial months",
+      "acceptableCategories": [
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "price_change",
+      "severity": "medium",
+      "anchorQuote": "We may change the price of any plan at our sole discretion",
+      "acceptableCategories": [
+        "price_change"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "tracking_profiling",
+      "severity": "high",
+      "anchorQuote": "we share these inferred interest segments with advertising partners to show you targeted ads",
+      "acceptableCategories": [
+        "tracking_profiling",
+        "data_sale_or_sharing"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "sensitive_biometric_data",
+      "severity": "high",
+      "anchorQuote": "may create a voiceprint to recognize you across devices",
+      "acceptableCategories": [
+        "sensitive_biometric_data"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "account_termination",
+      "severity": "high",
+      "anchorQuote": "We may suspend or terminate your account at any time, for any reason or no reason",
+      "acceptableCategories": [
+        "account_termination"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "our total liability to you for all claims is limited to five US dollars",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "auto_renewal",
+      "severity": "medium",
+      "anchorQuote": "your plan converts into a paid subscription and the monthly fee is charged",
+      "acceptableCategories": [
+        "auto_renewal",
+        "cancellation_refund"
+      ]
+    }
+  ]
+}

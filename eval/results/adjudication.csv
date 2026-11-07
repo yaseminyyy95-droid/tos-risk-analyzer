@@ -1,0 +1,4 @@
+docId,findingId,category,quote,verdict
+synthetic-acme-cloud-tos,C1F8,other,"limited to the amount you paid to Acme in the three months",unclear
+synthetic-acme-cloud-tos,C1F10,account_termination,"we may suspend paid features until the outstanding balance is paid",unclear
+synthetic-nimbus-health-privacy,C1F7,data_sale_or_sharing,"We may also disclose personal data to service providers who process it on our behalf",unclear

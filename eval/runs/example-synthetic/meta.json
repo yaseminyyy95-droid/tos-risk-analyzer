@@ -1,0 +1,15 @@
+{
+  "provider": "mock",
+  "model": "simulated-model",
+  "repeats": 1,
+  "promptVersion": "2026-11-v1",
+  "createdAt": "2026-11-07T17:37:25.613Z",
+  "synthetic": true,
+  "label": "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez",
+  "replayOf": null,
+  "docs": [
+    "synthetic-acme-cloud-tos",
+    "synthetic-brightstream-subscription",
+    "synthetic-nimbus-health-privacy"
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "docId": "synthetic-nimbus-health-privacy",
+  "repeat": 1,
+  "report": {
+    "reportId": "5091cd4db93fca2c",
+    "createdAt": "2026-11-07T17:37:25.612Z",
+    "url": "https://synthetic.example/legal/synthetic-nimbus-health-privacy",
+    "host": "synthetic.example",
+    "title": "Nimbus Health Privacy Policy",
+    "lang": "en",
+    "promptVersion": "2026-11-v1",
+    "provider": "mock",
+    "model": "simulated-model",
+    "textSha256": "ea5e16af39346fa8242dce05498160d65aea4f2ab4dfae680686267441f05c79",
+    "durationMs": 5,
+    "status": "PARTIAL",
+    "statusReasons_tr": [
+      "1 iddia orijinal metinde doğrulanamadığı için çıkarıldı."
+    ],
+    "score": 67,
+    "level": "Yüksek",
+    "llmSuggestedScore": 88,
+    "documentType": "privacy_policy",
+    "legalPageConfidence": 0.8,
+    "summary_tr": "SENTETİK örnek: bu özet simüle model tarafından üretildi ve gerçek bir LLM çıktısı değildir.",
+    "findings": [
+      {
+        "category": "data_sale_or_sharing",
+        "severity": "critical",
+        "title_tr": "Verilerin satışı veya paylaşımı",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "We share your health and fitness data with insurance partners and employers",
+        "segment_id": "S004",
+        "confidence": 0.8,
+        "id": "C1F3",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "3. Sharing"
+        ]
+      },
+      {
+        "category": "ai_training_use",
+        "severity": "high",
+        "title_tr": "Yapay zekâ eğitiminde kullanım",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "the content of your coaching chats, to train our machine learning models",
+        "segment_id": "S003",
+        "confidence": 0.8,
+        "id": "C1F2",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "2. How We Use Data"
+        ]
+      },
+      {
+        "category": "data_retention",
+        "severity": "high",
+        "title_tr": "Süresiz veri saklama",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "which may extend indefinitely after you stop using the Service",
+        "segment_id": "S005",
+        "confidence": 0.8,
+        "id": "C1F4",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "4. Retention"
+        ]
+      },
+      {
+        "category": "unilateral_changes",
+        "severity": "medium",
+        "title_tr": "Tek taraflı değişiklik",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "we may not notify you individually of changes",
+        "segment_id": "S007",
+        "confidence": 0.8,
+        "id": "C1F5",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "6. Changes"
+        ]
+      },
+      {
+        "category": "sensitive_biometric_data",
+        "severity": "medium",
+        "title_tr": "Hassas veya biyometrik veri",
+        "explanation_tr": "Bu madde tüketici için önemli bir risk oluşturuyor; ayrıntılar için alıntıyı okuyun ve gerekirse bir uzmana danışın.",
+        "quote": "menstrual cycle information and blood oxygen levels",
+        "segment_id": "S002",
+        "confidence": 0.8,
+        "id": "C1F6",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "1. Data We Collect"
+        ]
+      },
+      {
+        "category": "data_sale_or_sharing",
+        "severity": "low",
+        "title_tr": "Verilerin satışı veya paylaşımı",
+        "explanation_tr": "Bu madde kullanıcı açısından dikkat edilmesi gereken bir durum içeriyor ve bu yüzden listelendi.",
+        "quote": "We may also disclose personal data to service providers who process it on our behalf",
+        "segment_id": "S004",
+        "confidence": 0.7,
+        "id": "C1F7",
+        "matchTier": "exact",
+        "segmentCorrected": true,
+        "languageWarning": false,
+        "headingPath": [
+          "Nimbus Health App — Privacy Policy",
+          "3. Sharing"
+        ]
+      }
+    ],
+    "manipulativeFindings": [],
+    "rejectedCount": 1,
+    "rejectedReasons": {
+      "quote_has_forbidden_token": 1
+    },
+    "rejectedDetails": [
+      {
+        "reason": "quote_has_forbidden_token",
+        "category": "sensitive_biometric_data",
+        "closestMatchPreview": null
+      }
+    ],
+    "proposedCount": 7,
+    "groundingRate": 0.857,
+    "injection": {
+      "heuristicFlaggedSegments": [],
+      "flaggedPreviews": [],
+      "llmSuspected": false,
+      "hiddenBlocksRemoved": 0,
+      "hiddenBlocksWithInstructions": 0,
+      "modelPossiblyInfluenced": false
+    },
+    "sentinelHints": [],
+    "coverage": {
+      "segments": 8,
+      "chunks": 1,
+      "truncated": false,
+      "visibleChars": 2229
+    },
+    "uncertaintyNotes_tr": "Sentetik değerlendirme verisi.",
+    "disclaimer_tr": "Bu uygulama hukuki tavsiye vermez. Sonuçlar otomatik üretilmiştir ve hatalı veya eksik olabilir; önemli kararlar için bir hukuk profesyoneline danışın."
+  },
+  "canonicalText": "Nimbus Health App — Privacy Policy\nSYNTHETIC DOCUMENT. Nimbus Health is a fictional fitness and wellness application invented for evaluation purposes. This Privacy Policy explains how Nimbus Health Ltd. collects, uses and shares personal data when you use the Nimbus mobile app and connected wearable devices.\n\n1. Data We Collect\nWe collect the information you provide when you register, such as your name, email address, date of birth and gender. When you connect a wearable device, we collect health and fitness data including heart rate, sleep patterns, step counts, menstrual cycle information and blood oxygen levels.\nTo unlock the app with your face, we collect and store a faceprint derived from photos taken by your device camera, and we may use these facial geometry measurements to improve our recognition algorithms.\n\n2. How We Use Data\nWe use your data to provide the Service, to give you personalized coaching recommendations and to keep your account secure. We also use de-identified and aggregated health data, as well as the content of your coaching chats, to train our machine learning models and to develop new commercial products.\n\n3. Sharing\nWe share your health and fitness data with insurance partners and employers who sponsor your Nimbus subscription, who may use it to adjust wellness program rewards. We may also disclose personal data to service providers who process it on our behalf under written contracts.\n\n4. Retention\nWe retain your personal data for as long as we consider necessary for our business purposes, which may extend indefinitely after you stop using the Service, and backup copies may persist beyond that period.\n\n5. Children\nNimbus is not intended for children under 13, and we do not knowingly collect data from children under 13. If you believe a child has provided data to us, please contact us so that we can delete it.\n\n6. Changes\nWe may update this Privacy Policy from time to time, and the updated version will be effective as soon as it is posted in the app; we may not notify you individually of changes.\n\n7. Your Rights\nDepending on where you live, you may have the right to access, correct or delete your personal data. You can exercise these rights from the privacy section of the app settings.",
+  "findingSpans": [
+    {
+      "id": "C1F3",
+      "start": 1162,
+      "end": 1237
+    },
+    {
+      "id": "C1F2",
+      "start": 1037,
+      "end": 1109
+    },
+    {
+      "id": "C1F4",
+      "start": 1544,
+      "end": 1606
+    },
+    {
+      "id": "C1F5",
+      "start": 2013,
+      "end": 2058
+    },
+    {
+      "id": "C1F6",
+      "start": 570,
+      "end": 621
+    },
+    {
+      "id": "C1F7",
+      "start": 1327,
+      "end": 1411
+    }
+  ],
+  "segments": [
+    {
+      "id": "S001",
+      "charStart": 0,
+      "charEnd": 309
+    },
+    {
+      "id": "S002",
+      "charStart": 311,
+      "charEnd": 827
+    },
+    {
+      "id": "S003",
+      "charStart": 829,
+      "charEnd": 1149
+    },
+    {
+      "id": "S004",
+      "charStart": 1151,
+      "charEnd": 1436
+    },
+    {
+      "id": "S005",
+      "charStart": 1438,
+      "charEnd": 1657
+    },
+    {
+      "id": "S006",
+      "charStart": 1659,
+      "charEnd": 1869
+    },
+    {
+      "id": "S007",
+      "charStart": 1871,
+      "charEnd": 2059
+    },
+    {
+      "id": "S008",
+      "charStart": 2061,
+      "charEnd": 2252
+    }
+  ],
+  "rejected": [
+    {
+      "reason": "quote_has_forbidden_token",
+      "category": "sensitive_biometric_data",
+      "quote": "we collect and store a faceprint ... taken by your device camera"
+    }
+  ],
+  "usage": {
+    "inputTokens": 1488,
+    "outputTokens": 683
+  },
+  "latencyMs": 5
+}
