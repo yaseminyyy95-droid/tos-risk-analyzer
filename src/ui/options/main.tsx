@@ -1,2 +1,5 @@
 import { render } from "preact";
-render(<p>ToS Risk Analyzer</p>, document.getElementById("app")!);
+import "../styles.css";
+import { OptionsApp } from "./App";
+
+render(<OptionsApp />, document.getElementById("app")!);
