@@ -7,12 +7,13 @@ Kullanım koşulları, gizlilik politikası ve abonelik şartlarındaki riskli m
 
 ## Demo
 
-[`docs/demo/demo.mp4`](docs/demo/demo.mp4) (~57 sn, her senaryo 2 sn'lik başlık ekranıyla başlar) iki senaryo gösterir:
+**Ana demo videosu (Cypress):** [`docs/demo/demo-cypress.mp4`](docs/demo/demo-cypress.mp4), ~55 sn. Windows 11 + Node 24 üzerinde `npm run e2e:cypress` ile kaydedildi; 2/2 test geçti.
+Yedek video (Playwright, aynı senaryolar): [`docs/demo/demo.mp4`](docs/demo/demo.mp4).
+
+Video iki senaryo gösterir; her senaryo 2 sn'lik bir başlık ekranıyla başlar:
 
 1. **Mutlu yol:** 6 bulgunun hepsi alıntıyla doğrulanır. Skor deterministik olarak hesaplanır (83). "Sayfada göster" kapalı akordeonu açar ve alıntıyı vurgular.
 2. **Belirsizlik:** Sayfada beyaz üstüne beyaz gizli talimat ve görünür bir "AI'ya not" paragrafı var. Model "ele geçirilmiş" gibi davranıyor. Gizli metin LLM'e hiç gitmez; uydurma güvenceler rapordan çıkarılır; skor modelin önerdiği 0 değil, doğrulanmış tahkim maddesinden gelen 35 olur; durum "Belirsiz — manuel inceleme önerilir" olarak işaretlenir.
-
-<!-- Ekran görüntüsü / GIF yer tutucusu: docs/demo/screenshot.png -->
 
 ## Özellikler
 
@@ -118,8 +119,6 @@ sequenceDiagram
   CS-->>SP: vurgu (CSS Highlight API)
 ```
 
-> Not: Bu ortamda Mermaid CLI kurulu değildi (yeni bağımlılık eklenmedi); diyagramların söz dizimi GitHub Mermaid ile uyumlu, sade bir alt kümeyle yazıldı. Görsel render kontrolü GitHub'da yapılmalıdır.
-
 ## Güvenlik modeli (özet)
 
 Saldırgan modeli: ToS sayfasının sahibi veya sayfaya içerik enjekte eden üçüncü taraf. Korunan varlıklar: **rapor bütünlüğü**, **kullanıcının API anahtarı** ve **kullanıcının tarayıcısı**.
@@ -161,9 +160,6 @@ Skor formülü: `round(100 · (1 − Π(1 − wᵢ/100)))`. Ağırlıklar critic
 
 ```bash
 npm ci
-```
-
-```bash
 npm run build
 ```
 
@@ -190,76 +186,50 @@ Ardından Chrome'da `chrome://extensions` → **Geliştirici modu** → **Paketl
 - Sayfa metni, **siz analiz başlattığınızda** yalnızca seçtiğiniz sağlayıcıya gönderilir. Her sağlayıcı için ilk kullanımda ayrıca onay istenir.
 - Anthropic modellerinde uzantıdan doğrudan çağrı için `anthropic-dangerous-direct-browser-access` başlığı kullanılır; çağrıda yalnızca sizin kendi anahtarınız bulunur.
 - İzinler: `activeTab`, `scripting`, `storage`, `sidePanel`, `contextMenus`; host izni yalnızca üç LLM API'si için. `<all_urls>` **opsiyoneldir** ve yalnızca "Hukuki sayfaları otomatik algıla" açılırsa istenir. Bu mod analizi kendiliğinden başlatmaz; yalnızca rozet gösterir.
-- **Model adları**: öneri listesi `src/core/providers/models.ts` dosyasında tek yerdedir. Bu listeler geliştirme sırasında sağlayıcıların canlı dokümanlarıyla **doğrulanamadı**: Claude kimlikleri yalnızca gömülü bir API referansından (2026-10 önbelleği) alındı, OpenAI ve Groq adları hiç doğrulanmadı. Ayarlar sayfasındaki serbest metin alanına **sağlayıcının güncel listesinden seçtiğiniz** model adını yazın. Komut örneklerinde model adı `<MODEL_ADI>` yer tutucusuyla gösterilir; `<MODEL_ADI>` yerine sağlayıcının güncel model listesinden bir model adı yazın (OpenAI: platform.openai.com/docs/models, Anthropic: platform.claude.com/docs/en/about-claude/models, Groq: console.groq.com/docs/models).
+- **Model adları**: öneri listesi `src/core/providers/models.ts` dosyasında tek yerdedir ve sağlayıcıların canlı dokümanlarıyla **doğrulanmamıştır**. Ayarlar sayfasındaki serbest metin alanına sağlayıcının güncel listesinden seçtiğiniz model adını yazın. Komut örneklerindeki `<MODEL_ADI>` yer tutucusu için de aynı listeleri kullanın: OpenAI: platform.openai.com/docs/models, Anthropic: platform.claude.com/docs/en/about-claude/models, Groq: console.groq.com/docs/models.
 
 ## Testler
 
 ```bash
 npm run typecheck
-```
-
-```bash
 npm run lint
-```
-
-```bash
 npm test
-```
-
-```bash
 npm run test:coverage
-```
-
-```bash
-npm run e2e
-```
-
-```bash
+npm run e2e                      # Playwright
 npm run e2e:video:check
-```
-
-```bash
+npm run e2e:cypress              # Cypress (ana demo)
+npm run e2e:cypress:video:check
 npm run smoke
 ```
 
 - **Unit testler (Vitest + jsdom):** 256 test. `src/core` satır kapsamı %97.6. Kapsanan alanlar: şema, normalizasyon, segmentasyon, extractor (17 senaryo), görünürlük, injection (18 pozitif / 29 negatif; negatiflerin 12'si meşru sertifika ve araç cümlesi), V0–V12 doğrulama, skor, durum, pipeline (happy + compromised), sağlayıcı istek gövdeleri ve header'ları, anahtar maskeleme, SW orkestratörü, UI (XSS yok, disclaimer her yerde), export, ret-fallback ayarı ve `servedModel`/temperature izlenebilirliği, eval eşleştirme ve `--from-raw` ön kontrolü.
 - **E2E (harness yaklaşımı):** Test araçları `chrome-extension://` sayfalarını ve side panel'i doğrudan otomatize edemez. Bu yüzden `e2e/harness.html` kullanılır: solda fixture ToS sayfası (iframe), sağda **gerçek** side panel uygulaması. `e2e/chrome-shim.ts`, `chrome.runtime/storage/tabs/scripting` API'lerini süreç içinde taklit eder ve **gerçek** SW orkestratörünü, extractor'ı (iframe DOM'u üzerinde), pipeline'ı ve `OpenAIProvider`'ı çalıştırır. Yalnızca `api.openai.com` çağrısı stub'lanır; test anahtarı `sk-test-cypress`'tir. LLM fixture'ları elle yazılmaz: `npm run fixtures:build` fixture HTML'ini gerçek extractor ve segmentasyondan geçirip gerçek segment ID'leriyle üretir.
-- **İki E2E katmanı (Playwright + Cypress):** Aynı harness, aynı iki senaryo, aynı `data-cy` seçicileri ve aynı assert'ler.
-  - **Playwright** (`npm run e2e`, `tests/e2e/run-e2e.ts`): sistemde önceden kurulu Playwright ve Chromium ile çalışır. 2 senaryoda 29 kontrol vardır. Demo videosu bu katmandan üretilir (`docs/demo/demo.mp4`).
-  - **Cypress** (`npm run e2e:cypress`, `cypress/e2e/demo.cy.ts`): LLM `cy.intercept` ile stub'lanır. Geliştirme ortamında Cypress binary'si `download.cypress.io` erişimi olmadığı için indirilemedi; spec burada yalnızca tip kontrolünden geçti (`npm run typecheck:cypress`). Kendi makinenizde çalıştırma adımları aşağıda.
-  - Video kontrolü: `e2e:video:check` (Playwright) ve `e2e:cypress:video:check` (Cypress → `docs/demo/demo-cypress.mp4`) süreyi ffprobe ile ölçer ve **40–90 sn** aralığı dışında hata verir.
+- **İki E2E katmanı (Cypress + Playwright):** Aynı harness, aynı iki senaryo, aynı `data-cy` seçicileri ve aynı assert'ler.
+  - **Cypress** (`npm run e2e:cypress`, `cypress/e2e/demo.cy.ts`): LLM çağrısı `cy.intercept` ile stub'lanır. Windows 11 + Node 24 + Cypress 14.5.4 (Electron, headless) üzerinde çalıştırıldı: **2/2 test geçti**, süre 54 sn, video 55.4 sn. **Ana demo videosu budur** (`docs/demo/demo-cypress.mp4`).
+  - **Playwright** (`npm run e2e`, `tests/e2e/run-e2e.ts`): 2 senaryoda 29 kontrol. Yedek demo videosu bu katmandan üretilir (`docs/demo/demo.mp4`).
+  - Video kontrolü: `e2e:cypress:video:check` ve `e2e:video:check` süreyi ffprobe ile ölçer ve **40–90 sn** aralığı dışında hata verir.
 - **Smoke:** `dist/` paketlenmemiş uzantı olarak Chromium'a yüklenir; SW, side panel, options ve popup sayfaları JS hatası olmadan açılır ve disclaimer içerir.
 
-## Cypress'i kendi makinende çalıştırma
-
-Cypress binary'si `download.cypress.io`'dan iner; bu adrese erişimi olan bir makinede:
+## Cypress'i çalıştırma
 
 ```bash
 npm ci
-```
-
-```bash
 npx cypress verify
-```
-
-```bash
 npm run e2e:cypress
-```
-
-```bash
 npm run e2e:cypress:video:check
 ```
 
-- `npm ci` Cypress binary'sini `~/.cache/Cypress` altına indirir. `npx cypress verify` "Verified Cypress!" demeli; demiyorsa `npx cypress install` çalıştırın.
+- `npm ci` Cypress programını da indirir (Windows'ta `%LOCALAPPDATA%\Cypress\Cache`, Linux/macOS'ta `~/.cache/Cypress`). `npx cypress verify` "Verified Cypress!" demeli; demiyorsa `npx cypress install` çalıştırın.
 - `e2e:cypress` harness'ı derler, `start-server-and-test` ile `vite preview`'u 4173 portunda başlatır ve `cypress run --spec cypress/e2e/demo.cy.ts` çalıştırır. Video `cypress/videos/demo.cy.ts.mp4` olarak kaydedilir (`video: true`, 1440×900).
 - `e2e:cypress:video:check` süreyi 40–90 sn aralığında doğrular ve videoyu `docs/demo/demo-cypress.mp4` olarak kopyalar.
+- **Windows notu:** Testler bittikten sonra `Error: spawn wmic.exe ENOENT` görülebilir. Bu, `start-server-and-test`'in sunucuyu kapatmak için yeni Windows 11 sürümlerinden kaldırılmış `wmic` aracını aramasından kaynaklanır; test sonuçlarını ve videoyu etkilemez. Sonraki çalıştırmada 4173 portu meşgul görünürse terminali kapatıp yeniden açın.
 - Etkileşimli mod için `npm run harness:build && npm run harness:serve` çalıştırın, ayrı bir terminalde `npx cypress open` açın.
 
 ## Benchmark
 
-Ayrıntılar: [eval/README.md](eval/README.md), [docs/EVAL_REPORT.md](docs/EVAL_REPORT.md), [eval/ANNOTATION_GUIDE.md](eval/ANNOTATION_GUIDE.md).
+Ayrıntılar: [eval/README.md](eval/README.md), [docs/EVAL_REPORT.md](docs/EVAL_REPORT.md), [eval/ANNOTATION_GUIDE.md](eval/ANNOTATION_GUIDE.md), [eval/REAL_CORPUS_STEPS.md](eval/REAL_CORPUS_STEPS.md).
 
-- **Korpus:** `eval/corpus.manifest.json` 5 gerçek şirket ToS kaydı (Zoom, Spotify, TikTok US, Netflix, Reddit) ve 1 gizlilik politikası içerir. Bu kayıtlar geliştirme ortamında **çekilemedi**: ağ politikası şirket sitelerine izin vermiyordu ve ağ erişimi eklenmedi. Kendi makinenizde `npm run eval:fetch` ile, bot engeli olursa `eval/raw/<id>.html` + `--from-raw` ile çekin.
+- **Korpus:** `eval/corpus.manifest.json` 5 gerçek şirket ToS kaydı (Zoom, Spotify, TikTok US, Netflix, Reddit) ve 1 gizlilik politikası içerir. Metinler henüz çekilmedi; adımlar `eval/REAL_CORPUS_STEPS.md` dosyasında: `npm run eval:fetch`, bot engeli olursa sayfayı `eval/raw/<id>.html` olarak kaydedip `--from-raw`.
 - **Anahtarsız çalışma**, açıkça **sentetik** etiketli 3 kurgusal doküman ve bir **simüle model** ile yapılır. Simüle model kasıtlı hatalar içerir:
 
   ```bash
@@ -280,6 +250,8 @@ Ayrıntılar: [eval/README.md](eval/README.md), [docs/EVAL_REPORT.md](docs/EVAL_
   ```bash
   OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1
   ```
+
+  PowerShell'de: `$env:OPENAI_API_KEY="sk-..."; npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1`
 
 - **Sınırlamalar:** küçük n; gold etiketler **LLM destekli taslaktır, insan incelemesinden geçmeden kesin metrik değildir (annotation bias riski)**; tek annotator; sitelerin metni değişebilir; model nondeterminizmi.
 
@@ -303,10 +275,12 @@ src/ui/          components/, sidepanel/, popup/, options/, i18n/tr.ts, styles.c
 src/shared/      messages.ts (Zod ile doğrulanan protokol), types.ts
 e2e/             harness.html, harness.tsx, chrome-shim.ts
 fixtures/        pages/ (kurgusal Acme ToS), llm/ (üretilmiş LLM fixture'ları)
+cypress/         e2e/demo.cy.ts, support/
 tests/           unit/ (Vitest), e2e/run-e2e.ts (Playwright), smoke/
 eval/            corpus.manifest.json, synthetic/, corpus/, gold/, runs/, results/, scripts/
 scripts/         build-fixtures.ts, check-video.mjs, escape-invisible.py
-docs/            ARCHITECTURE.md, SECURITY.md, DECISIONS.md, EVAL_REPORT.md, demo/demo.mp4
+docs/            ARCHITECTURE.md, SECURITY.md, DECISIONS.md, EVAL_REPORT.md,
+                 demo/demo-cypress.mp4 (ana), demo/demo.mp4 (yedek)
 ```
 
 ## Lisans
