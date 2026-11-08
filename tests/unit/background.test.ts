@@ -179,6 +179,24 @@ describe("orchestrator (SW)", () => {
     expect(JSON.stringify(st)).not.toContain(KEY);
   });
 
+  it("sekmede açılan ayarlar sayfasından (sender.tab dolu) anahtar kaydedilebilir", async () => {
+    const shim = createChromeShim({ getDocument: () => document });
+    initBackground(shim.api);
+    const listeners = [...(shim.api.runtime.onMessage as unknown as { listeners: Set<(...a: unknown[]) => unknown> }).listeners];
+    let res: unknown;
+    const done = new Promise<void>((resolve) => {
+      const handled = listeners[0]!(
+        { type: "SET_KEY", provider: "anthropic", key: KEY, sessionOnly: false },
+        { id: shim.api.runtime.id, tab: { id: 7 }, url: shim.api.runtime.getURL("src/ui/options/index.html") },
+        (r: unknown) => { res = r; resolve(); },
+      );
+      expect(handled).toBe(true);
+    });
+    await done;
+    expect(res).toEqual({ ok: true });
+    expect(await getKey(shim.api, "anthropic")).toBe(KEY);
+  });
+
   it("HIGHLIGHT_QUOTE content script'e iletilir", async () => {
     const shim = createChromeShim({ getDocument: () => document });
     initBackground(shim.api);

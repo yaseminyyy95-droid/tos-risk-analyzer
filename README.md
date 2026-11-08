@@ -282,7 +282,7 @@ Simüle model kasıtlı hatalar içerir (halüsinasyon oranı %16, doğrulama he
 $env:ANTHROPIC_API_KEY="..."; npm run eval:all -- --provider anthropic --model claude-sonnet-5-5 --repeats 1
 ```
 
-OpenAI ve Groq için `--provider openai` / `--provider groq` ve ilgili `*_API_KEY`. Bu çalıştırma yaklaşık 3–4 dk sürdü ve yaklaşık 3 USD harcadı (benchmark + 40 adversarial deneme).
+OpenAI ve Groq için `--provider openai` / `--provider groq` ve ilgili `*_API_KEY`. Benchmark + 40 adversarial deneme birkaç dakika sürer ve birkaç USD tutar.
 
 ### Benchmark sınırlamaları
 

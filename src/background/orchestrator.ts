@@ -37,8 +37,11 @@ type PendingAction = "analyze" | "analyze_selection";
 export function initBackground(api: typeof chrome, opts: OrchestratorOptions = {}) {
   const activeJobs = new Map<number, AbortController>();
 
+  // Not: options_page bir sekmede açılır, bu yüzden sender.tab dolu olabilir. Belirleyici olan
+  // gönderen belgenin URL'sinin uzantının kendi kökeninde (chrome-extension://<id>/) olmasıdır;
+  // content script mesajlarında sender.url web sayfasının adresidir ve reddedilir.
   const isExtensionPage = (sender: chrome.runtime.MessageSender) =>
-    sender.id === api.runtime.id && !sender.tab && (sender.url ?? "").startsWith(api.runtime.getURL(""));
+    sender.id === api.runtime.id && (sender.url ?? "").startsWith(api.runtime.getURL(""));
 
   async function setJob(tabId: number, job: JobState | null) {
     const r = await api.storage.session.get(JOBS_KEY);
