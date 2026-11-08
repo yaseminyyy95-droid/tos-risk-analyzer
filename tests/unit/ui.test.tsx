@@ -14,6 +14,15 @@ import { failedReport } from "../../src/core/pipeline";
 import { DISCLAIMER_TR, type VerifiedReport } from "../../src/core/schema";
 
 const flush = () => new Promise((r) => setTimeout(r, 30));
+// Sabit bekleme yerine eleman görünene kadar yoklar (tam paket paralel koşarken 30 ms yetmeyebiliyor).
+const waitFor = async (sel: string): Promise<Element> => {
+  for (let i = 0; i < 100; i++) {
+    const el = root.querySelector(sel);
+    if (el) return el;
+    await new Promise((r) => setTimeout(r, 20));
+  }
+  throw new Error(`Eleman bulunamadı: ${sel}`);
+};
 
 function sampleReport(): VerifiedReport {
   const base = failedReport({ url: "https://acme.example/terms", title: "Acme <img src=x onerror=alert(1)>", legalPageConfidence: 0.9, stats: { totalChars: 5000, visibleChars: 5000, quarantinedChars: 0 } }, "provider_error", "openai", "gpt-4.1");
@@ -126,13 +135,10 @@ describe("SidePanelApp akışı", () => {
     await setKey(shim.api, "openai", "sk-test-ui-123456789", false);
     initBackground(shim.api);
     render(<SidePanelApp api={shim.api} />, root);
-    await flush();
-    (root.querySelector('[data-cy="analyze-btn"]') as HTMLButtonElement).click();
-    await flush();
-    expect(root.querySelector('[data-cy="consent-dialog"]')!.textContent).toContain("OpenAI");
-    (root.querySelector('[data-cy="consent-decline"]') as HTMLButtonElement).click();
-    await flush();
-    expect(root.querySelector('[data-cy="error-message"]')!.textContent).toContain("Onay verilmediği");
+    ((await waitFor('[data-cy="analyze-btn"]')) as HTMLButtonElement).click();
+    expect((await waitFor('[data-cy="consent-dialog"]')).textContent).toContain("OpenAI");
+    ((await waitFor('[data-cy="consent-decline"]')) as HTMLButtonElement).click();
+    expect((await waitFor('[data-cy="error-message"]')).textContent).toContain("Onay verilmediği");
     expect(shim.sentToContent).toHaveLength(0);
   });
 });
