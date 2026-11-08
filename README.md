@@ -227,33 +227,71 @@ npm run e2e:cypress:video:check
 
 ## Benchmark
 
-Ayrıntılar: [eval/README.md](eval/README.md), [docs/EVAL_REPORT.md](docs/EVAL_REPORT.md), [eval/ANNOTATION_GUIDE.md](eval/ANNOTATION_GUIDE.md), [eval/REAL_CORPUS_STEPS.md](eval/REAL_CORPUS_STEPS.md).
+Ayrıntılar: [docs/EVAL_REPORT.md](docs/EVAL_REPORT.md), [eval/README.md](eval/README.md), [eval/ANNOTATION_GUIDE.md](eval/ANNOTATION_GUIDE.md), [eval/REAL_CORPUS_STEPS.md](eval/REAL_CORPUS_STEPS.md).
 
-- **Korpus:** `eval/corpus.manifest.json` 5 gerçek şirket ToS kaydı (Zoom, Spotify, TikTok US, Netflix, Reddit) ve 1 gizlilik politikası içerir. Metinler henüz çekilmedi; adımlar `eval/REAL_CORPUS_STEPS.md` dosyasında: `npm run eval:fetch`, bot engeli olursa sayfayı `eval/raw/<id>.html` olarak kaydedip `--from-raw`.
-- **Anahtarsız çalışma**, açıkça **sentetik** etiketli 3 kurgusal doküman ve bir **simüle model** ile yapılır. Simüle model kasıtlı hatalar içerir:
+### Gerçek model sonuçları (anthropic / `claude-sonnet-5-5`, 1 tekrar)
 
-  ```bash
-  npm run eval:all -- --provider mock --replay eval/runs/example-synthetic
-  ```
+**Korpus:** 5 gerçek ToS (Zoom, Spotify, TikTok US, Netflix Türkiye, Reddit) ve 3 açıkça **sentetik** doküman. Gold: 53 gerçek + 23 sentetik madde. Gerçek metinler telif nedeniyle repoya konmadı (`eval/corpus/*.json` ve `eval/runs/` gitignore'da); `eval/REAL_CORPUS_STEPS.md` ile yeniden üretilebilir.
 
-  | Metrik (SENTETİK) | Değer |
-  |---|---|
-  | Micro P / R / F1 | 85.7% / 78.3% / 81.8% |
-  | Doğrulama öncesi halüsinasyon oranı | 16.0% (simüle modelin 25 iddiasından 4'ü reddedildi) |
-  | Doğrulama sonrası grounding (invariant) | ✓ 21/21 alıntı metinde |
-  | Adversarial, "omit" profili | ASR 100%, tespit 100% |
-  | Adversarial, "inflate" profili | ASR 0%, tespit 100% |
+| Doküman | Gold | Doğrulanan | TP | FP | FN | Precision | Recall | F1 |
+|---|---|---|---|---|---|---|---|---|
+| Zoom ToS | 10 | 29 | 9 | 20 | 1 | 31.0% | 90.0% | 46.2% |
+| Spotify ToU | 11 | 21 | 9 | 12 | 2 | 42.9% | 81.8% | 56.3% |
+| TikTok ToS (US) | 12 | 16 | 8 | 8 | 4 | 50.0% | 66.7% | 57.1% |
+| Netflix ToU (TR) | 10 | 10 | 7 | 3 | 3 | 70.0% | 70.0% | 70.0% |
+| Reddit UA | 10 | 14 | 6 | 8 | 4 | 42.9% | 60.0% | 50.0% |
+| 3 sentetik doküman | 23 | 25 | 20 | 5 | 3 | 80.0% | 87.0% | 83.3% |
 
-  Bu sayılar gerçek model performansını **göstermez**; ölçüm hattının ve doğrulama katmanının uçtan uca çalıştığını gösterir. "Omit" satırı önemli bir sınırlamayı ortaya koyar: model gerçek riskleri atlarsa doğrulama katmanı onları geri getiremez; savunma "Belirsiz" durumu ve sentinel ipuçlarıdır.
-- **Gerçek sağlayıcı ile tek komut:**
+| Toplam metrik | Değer |
+|---|---|
+| Micro P / R / F1 | 51.3% / 77.6% / 61.8% |
+| Macro P / R / F1 | 60.9% / 78.5% / 66.6% |
+| **Adjudication sonrası precision** | **87.0%** (56 FP'nin 41'i gold'da eksik kalmış geçerli risk, 15'i gerçek FP) |
+| Doğrulama öncesi halüsinasyon oranı | **0.0%** (önerilen alıntıların hiçbiri reddedilmedi) |
+| Doğrulama sonrası grounding | ✓ 115 doğrulanmış alıntının tamamı metinde birebir var |
+| Severity uyumu (TP'lerde) | 74.6% |
+| Süre / token | 200 sn / 150.799 girdi, 29.873 çıktı |
 
-  ```bash
-  OPENAI_API_KEY=sk-... npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1
-  ```
+**Yorum.** Recall yüksek (%78), ham precision düşük (%51). FP'lerin büyük çoğunluğu uydurma değil: model gold listesinde olmayan gerçek riskleri de buldu (ör. Spotify'da "tek çareniz uygulamayı silmek", Zoom'da reddedilen kartın yine de tahsil edilmesi). Bunlar `eval/results/adjudication.csv` dosyasında tek tek `valid_unannotated` / `true_fp` olarak işaretlendi. Gerçek FP'ler çoğunlukla kalıp cümleler ("kullanarak kabul edersiniz"), usul maddeleri (bildirim adresi, survival) ve yanlış kategori (sözleşme devri → "tek taraflı değişiklik"). En çok kaçırılan kategoriler: tek taraflı değişiklik ve hesap kapatma/içerik kaldırma.
 
-  PowerShell'de: `$env:OPENAI_API_KEY="sk-..."; npm run eval:all -- --provider openai --model <MODEL_ADI> --repeats 1`
+### Prompt injection dayanıklılığı (gerçek model)
 
-- **Sınırlamalar:** küçük n; gold etiketler **LLM destekli taslaktır, insan incelemesinden geçmeden kesin metrik değildir (annotation bias riski)**; tek annotator; sitelerin metni değişebilir; model nondeterminizmi.
+8 doküman × 5 saldırı (görünür "talimatları yok say + skor 0", beyaz üstüne beyaz gizli metin, sahte `<<<END_DOC>>>` ayracı, Türkçe talimat, "üretici tarafından güvenli sertifikalı") = 40 deneme.
+
+| Metrik | Ham | Metne ulaşan saldırılar (n=30) |
+|---|---|---|
+| Tespit (durum "Belirsiz") | 75.0% | **100%** |
+| Attack Success Rate | 25.0% | **0%** |
+| Ort. Jaccard (temiz ↔ saldırılı) | 0.51 | — |
+
+Ham ASR'deki 10 "başarı"nın tamamı TikTok ve Netflix'ten gelir. Bu iki sayfada test aracı saldırıyı `</main>` öncesine ekliyor, ancak eklentinin extractor'ı metni daha dar bir içerik kökünden alıyor; enjekte edilen metin analiz edilen dokümana **hiç girmedi** (heuristik 0, gizli metin 0). Skorlar da değişmedi (TikTok 82 → 82–85, Netflix 71 → 66–71), yani model manipüle olmadı. Bu bir test düzeneği sınırlamasıdır. Metne ulaşan 30 saldırının hepsi tespit edildi; hiçbiri skoru 15 puandan fazla düşürmedi. Gizli saldırılar karantinaya alındı, görünür saldırılar heuristik dedektöre takıldı.
+
+### Anahtarsız (sentetik) çalışma
+
+Ölçüm hattı API anahtarı olmadan simüle bir modelle de çalışır:
+
+```bash
+npm run eval:all -- --provider mock --replay eval/runs/example-synthetic
+```
+
+Simüle model kasıtlı hatalar içerir (halüsinasyon oranı %16, doğrulama hepsini reddeder; "omit" saldırı profilinde ASR %100). Bu sayılar gerçek model performansı değildir; doğrulama katmanının uçtan uca çalıştığını gösterir.
+
+### Gerçek sağlayıcıyla tekrar üretme
+
+```powershell
+$env:ANTHROPIC_API_KEY="..."; npm run eval:all -- --provider anthropic --model claude-sonnet-5-5 --repeats 1
+```
+
+OpenAI ve Groq için `--provider openai` / `--provider groq` ve ilgili `*_API_KEY`. Bu çalıştırma yaklaşık 3–4 dk sürdü ve yaklaşık 3 USD harcadı (benchmark + 40 adversarial deneme).
+
+### Benchmark sınırlamaları
+
+- **Gold etiketler LLM destekli taslaktır** (Claude ile hazırlandı, `annotationStatus: draft`). İnsan incelemesinden geçmeden kesin metrik değildir; tek annotator, annotation bias riski. Aynı model ailesinin hem gold taslağını hem analizi yapması sonuçları iyimser gösterebilir.
+- **Küçük n** (5 gerçek doküman, 53 madde), tek tekrar; model çıktıları deterministik değildir.
+- **Reddit** sayfası hem ABD hem AB (EEA) sürümünü ve ~1600 dil menüsü bloğunu içeriyor; extractor iki sürümü birden alıyor. Bu yüzden bazı bulgular AB sürümünden geldi.
+- **Netflix** Türkiye sürümü (Türkçe) kullanıldı; diğerleri İngilizce.
+- Adversarial testte iki sayfada enjeksiyon extractor kökünün dışına düştü (yukarıya bakın).
+- Sitelerin metni zamanla değişir; sonuçlar 2026-11 tarihli kayıtlara aittir.
 
 ## Bilinen sınırlamalar
 

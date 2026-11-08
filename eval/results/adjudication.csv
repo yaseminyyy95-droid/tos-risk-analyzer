@@ -1,4 +1,57 @@
 docId,findingId,category,quote,verdict
-synthetic-acme-cloud-tos,C1F8,other,"limited to the amount you paid to Acme in the three months",unclear
-synthetic-acme-cloud-tos,C1F10,account_termination,"we may suspend paid features until the outstanding balance is paid",unclear
-synthetic-nimbus-health-privacy,C1F7,data_sale_or_sharing,"We may also disclose personal data to service providers who process it on our behalf",unclear
+netflix-tou,C1F7,content_license_ip,"size herhangi bir ek tazminat vermeksizin, sizin katkınızı belirtmeksizin veya size ödeme yapmaksızın",valid_unannotated
+netflix-tou,C1F6,unilateral_changes,"Sizinle anlaşmamızı, ilişkili haklarımız ve yükümlülüklerimiz dâhil olmak üzere, herhangi bir zamanda bir başka tarafa devir veya temlik edebiliriz",true_fp
+netflix-tou,C1F10,other,"bilgisayarınıza tam erişim sahibi olmamızı sağlayan bir uzaktan erişim destek aracı kullanması gerekebilir",valid_unannotated
+reddit-ua,C2F5,unilateral_changes,"By continuing to access or use the Services on or after the Effective Date of the revised Terms, you agree to be bound by the revised Terms.",valid_unannotated
+reddit-ua,C2F7,liability_limitation,"you agree to defend, indemnify, and hold Reddit, its affiliates, and their respective, directors, officers, employees, affiliates, agents, contractors, third-party service providers, and licensors",valid_unannotated
+reddit-ua,C3F3,liability_limitation,"Reddit isn’t liable for damages that result from a non-material breach of any other applicable duty of care.",valid_unannotated
+reddit-ua,C3F4,unilateral_changes,"to the extent any Additional Terms conflict with these Terms, the Additional Terms govern with respect to your use of the corresponding Services.",true_fp
+reddit-ua,C3F5,other,"Reddit may, without restriction, assign any of our rights and obligations under these Terms, at its sole discretion, with 30 days’ prior notice.",valid_unannotated
+reddit-ua,C2F10,other,"You understand that through your use of the Services, you consent to the collection and use of this information as set forth in the Privacy Policy.",true_fp
+reddit-ua,C1F1,other,"By accessing or using our Services, you agree to be bound by these Terms.",true_fp
+reddit-ua,C2F9,tracking_profiling,"The type, degree, and targeting of advertisements are subject to change, and you acknowledge and agree that we may place advertisements",valid_unannotated
+spotify-tou,C2F1,arbitration_class_waiver,"each party may bring a Dispute against the other party only in an individual capacity and not participate as a plaintiff, claimant, or class member in any class, collective, consolidated, private attorney general, or representative proceeding",valid_unannotated
+spotify-tou,C1F8,auto_renewal,"Paid Subscriptions continue indefinitely until cancelled.",valid_unannotated
+spotify-tou,C2F2,arbitration_class_waiver,"all of the cases must be resolved in arbitration through staged sets of proceedings. You agree to this process even though it may delay the arbitration of your case.",valid_unannotated
+spotify-tou,C2F5,arbitration_class_waiver,"Opting out of a material change to the Arbitration Agreement is not an opt-out of arbitration altogether.",true_fp
+spotify-tou,C1F6,liability_limitation,"YOUR SOLE AND EXCLUSIVE REMEDY FOR ANY PROBLEMS OR DISSATISFACTION WITH THE SPOTIFY SERVICE IS TO UNINSTALL ANY SPOTIFY SOFTWARE AND TO STOP USING THE SPOTIFY SERVICE.",valid_unannotated
+spotify-tou,C1F11,unilateral_changes,"Spotify reserves the right to change our Spotify Service offerings and their availability from time to time, without notice or liability to you.",valid_unannotated
+spotify-tou,C1F3,arbitration_class_waiver,"the parties agree to engage in good faith for a period of sixty (60) days in an effort to resolve the Dispute",true_fp
+spotify-tou,C1F12,account_termination,"Spotify shall have no liability or responsibility to you, and (except as expressly provided in these Terms) Spotify will not refund any amounts that you have already paid.",valid_unannotated
+spotify-tou,C1F13,liability_limitation,"You agree to indemnify and hold Spotify harmless from and against all damages, losses, and expenses of any kind",valid_unannotated
+spotify-tou,C1F15,jurisdiction_governing_law,"you and Spotify agree to the exclusive jurisdiction of the federal or state courts located in New York, New York",valid_unannotated
+spotify-tou,C2F3,arbitration_class_waiver,"If you choose to file an arbitration proceeding, the allocation and payment of Arbitration Fees will be governed by the NAM Rules",true_fp
+spotify-tou,C2F6,other,"Spotify may assign any or all of these Terms, and may assign or delegate, in whole or in part, any of its rights or obligations under these Terms.",valid_unannotated
+synthetic-acme-cloud-tos,C1F5,data_retention,"Data used for this purpose may be retained after you delete the original files.",valid_unannotated
+synthetic-acme-cloud-tos,C1F10,account_termination,"or if your account has been inactive for more than two years. Where reasonable, we will give you an opportunity to export your files before termination.",valid_unannotated
+synthetic-acme-cloud-tos,C1F11,jurisdiction_governing_law,"the state and federal courts located in Wilmington, Delaware will have exclusive jurisdiction over any claim not subject to arbitration.",valid_unannotated
+synthetic-brightstream-subscription,C1F3,tracking_profiling,"the time and place you listen, and the devices you use. We use this listening history to build a profile of your tastes and moods",valid_unannotated
+synthetic-brightstream-subscription,C1F4,tracking_profiling,"we may verify the address using approximate location data collected from members’ devices.",valid_unannotated
+tiktok-tos-us,C1F11,arbitration_class_waiver,"YOU MUST INITIATE ANY PROCEEDING OR ACTION WITHIN ONE (1) YEAR OF THE DATE OF THE OCCURRENCE OF THE EVENT OR FACTS GIVING RISE TO A DISPUTE",valid_unannotated
+tiktok-tos-us,C1F13,other,"You agree to defend, indemnify, and hold harmless TikTok USDS Joint Venture and our affiliates, service providers, and business partners",valid_unannotated
+tiktok-tos-us,C1F14,unilateral_changes,"If you continue to use the Platform after any updated Terms are in effect, you agree to be bound by the updated Terms.",valid_unannotated
+tiktok-tos-us,C1F4,content_license_ip,"We will own all rights in anything we develop based on your comments, ideas, or feedback.",valid_unannotated
+tiktok-tos-us,C1F8,account_termination,"We may revoke, reclaim, and/or reassign the username of your account in certain circumstances, such as, when you have not logged into your account for 180 days",valid_unannotated
+tiktok-tos-us,C1F10,liability_limitation,"Under no circumstance will TikTok USDS Joint Venture or our affiliates, service providers, or business partners",valid_unannotated
+tiktok-tos-us,C2F1,unilateral_changes,"Our rights and obligations under these Terms are freely assignable by us without any requirement to notify you or any third party",true_fp
+tiktok-tos-us,C1F15,other,"submit appeals, reports, notices or complaints which are unfounded,",true_fp
+zoom-tos,C1F1,arbitration_class_waiver,"in Section 27, that you and Zoom will arbitrate certain claims instead of going to court and that you will not bring class-action claims against Zoom",true_fp
+zoom-tos,C2F2,arbitration_class_waiver,"You and Zoom hereby waive any constitutional and statutory rights to sue in court and have a trial in front of a judge or a jury.",valid_unannotated
+zoom-tos,C1F4,price_change,"If you do not terminate or modify the affected Services within the applicable Rate Change Notice time period, then you shall be deemed to have automatically accepted the change to your Charges",valid_unannotated
+zoom-tos,C2F5,arbitration_class_waiver,"within (i) thirty (30) calendar days of April 1, 2023 if you are an existing user, or (ii) thirty (30) calendar days of the date you created your account if you are a new user.",true_fp
+zoom-tos,C2F4,arbitration_class_waiver,"You agree that compliance with this Section 27.3 is a condition precedent to commencing arbitration, and that the arbitrator shall dismiss any arbitration filed without fully and completely complying",true_fp
+zoom-tos,C2F7,liability_limitation,"ZOOM DOES NOT ASSUME ANY RESPONSIBILITY FOR RETENTION OF ANY DATA, INCLUDING CUSTOMER CONTENT AND CUSTOMER DATA, USER INFORMATION, OR COMMUNICATIONS BETWEEN USERS.",valid_unannotated
+zoom-tos,C1F8,account_termination,"if any failure to pay Charges continues for five (5) calendar days following the due date, Zoom may terminate, suspend, or disconnect your Services immediately and without prior notice",valid_unannotated
+zoom-tos,C2F8,liability_limitation,"you agree to indemnify, defend, and hold Zoom and its affiliates and each of our licensors and suppliers (“Indemnified Parties”) harmless",valid_unannotated
+zoom-tos,C2F12,jurisdiction_governing_law,"the parties consent to the exclusive jurisdiction and venue of the state courts located in and serving Santa Clara County, California",valid_unannotated
+zoom-tos,C1F11,other,"we may disclose Customer information, including Customer Confidential Information, to a tax authority without notice to you before or after the disclosure",valid_unannotated
+zoom-tos,C1F12,liability_limitation,"Under no circumstances will Zoom be liable in any way for any data or other content viewed while using the Services",valid_unannotated
+zoom-tos,C2F10,tracking_profiling,"during and after the term of this Agreement, including to generate industry benchmarks or best practices guidance, recommendations, or similar reports.",valid_unannotated
+zoom-tos,C1F10,tracking_profiling,"Zoom owns all rights, title, and interest in and to Service Generated Data.",valid_unannotated
+zoom-tos,C1F13,other,"Zoom may, in its sole discretion, (i) discontinue the Services, or (ii) modify the features or functionality of the Services or Software.",valid_unannotated
+zoom-tos,C1F14,other,"to charge your current primary Payment Method by using the details of such Payment Method saved in our system, even if such Payment Method is declined",valid_unannotated
+zoom-tos,C2F9,data_sale_or_sharing,"determined by Zoom in its sole discretion to be (a) a risk or potential risk of harm to a person or to the health of a person",true_fp
+zoom-tos,C1F15,cancellation_refund,"If the Services begin before any withdrawal or cooling-off period, or you fail to terminate your Services during the right of withdrawal or cooling-off period",valid_unannotated
+zoom-tos,C3F1,other,"You will provide notice to us (such notice is deemed given when received by Zoom) by letter delivered by a nationally recognized overnight delivery service or first-class postage prepaid mail",true_fp
+zoom-tos,C3F2,arbitration_class_waiver,"license rights granted by you to Zoom, payment obligations, warranty disclaimers, indemnification, arbitration, and the limitation on liability.",true_fp
+zoom-tos,C2F11,unilateral_changes,"Zoom may, at any time, in its sole discretion, modify the Services or Software, which may result in the failed interoperation, integration, or support of Third-Party Offerings.",valid_unannotated

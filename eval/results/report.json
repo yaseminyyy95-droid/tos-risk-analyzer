@@ -1,123 +1,369 @@
 {
-  "run": "eval/runs/_last",
+  "run": "eval\\runs\\_last",
   "meta": {
-    "provider": "mock",
-    "model": "mock-replay",
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
     "repeats": 1,
     "promptVersion": "2026-11-v1",
-    "createdAt": "2026-11-07T19:49:28.256Z",
-    "synthetic": true,
-    "label": "SENTETİK — simüle model çıktısı; gerçek bir LLM performansını göstermez",
-    "replayOf": "eval/runs/example-synthetic",
+    "createdAt": "2026-11-08T00:59:08.924Z",
+    "synthetic": false,
+    "label": "Gerçek sağlayıcı çalışması",
+    "replayOf": null,
     "docs": [
+      "netflix-tou",
+      "reddit-ua",
+      "spotify-tou",
       "synthetic-acme-cloud-tos",
       "synthetic-brightstream-subscription",
-      "synthetic-nimbus-health-privacy"
+      "synthetic-nimbus-health-privacy",
+      "tiktok-tos-us",
+      "zoom-tos"
     ],
     "refusalFallback": false,
     "servedModels": [
-      "mock-replay"
+      "claude-sonnet-5-5"
     ],
     "servedModelMismatch": false
   },
-  "documents": 3,
+  "documents": 8,
   "micro": {
-    "precision": 0.8571428571428571,
-    "recall": 0.782608695652174,
-    "f1": 0.8181818181818182
+    "precision": 0.5130434782608696,
+    "recall": 0.7763157894736842,
+    "f1": 0.6178010471204188
   },
   "macro": {
-    "precision": 0.8611111111111112,
-    "recall": 0.7916666666666666,
-    "f1": 0.8241830065359478
+    "precision": 0.6090672737224462,
+    "recall": 0.7852588383838385,
+    "f1": 0.666010919227831
   },
-  "adjustedPrecision": 0.8571428571428571,
-  "preVerificationHallucinationRate": 0.16,
+  "adjustedPrecision": 0.8695652173913043,
+  "preVerificationHallucinationRate": 0,
   "postVerificationGrounding": {
-    "verified": 21,
+    "verified": 115,
     "violations": 0,
     "invariantHolds": true
   },
-  "severityAgreement": 0.8888888888888888,
+  "severityAgreement": 0.7457627118644068,
   "categoryRecall": {
     "arbitration_class_waiver": 1,
-    "data_sale_or_sharing": 1,
-    "auto_renewal": 0.6666666666666666,
-    "cancellation_refund": 0.6666666666666666,
-    "content_license_ip": 1,
+    "cancellation_refund": 1,
+    "auto_renewal": 0.6,
+    "other": 0.8,
+    "price_change": 0.75,
+    "liability_limitation": 1,
+    "unilateral_changes": 0.6,
+    "content_license_ip": 0.75,
+    "jurisdiction_governing_law": 0.6666666666666666,
+    "account_termination": 0.625,
     "ai_training_use": 1,
-    "unilateral_changes": 0.5,
-    "liability_limitation": 0.5,
-    "price_change": 1,
+    "data_sale_or_sharing": 0.6666666666666666,
     "tracking_profiling": 1,
     "sensitive_biometric_data": 0.6666666666666666,
-    "account_termination": 1,
-    "data_retention": 1
+    "data_retention": 0.5
   },
   "statusDistribution": {
-    "PARTIAL": 3
+    "OK": 8
   },
   "repeatsF1": {
+    "netflix-tou": [
+      0.7
+    ],
+    "reddit-ua": [
+      0.5
+    ],
+    "spotify-tou": [
+      0.5625
+    ],
     "synthetic-acme-cloud-tos": [
-      0.7058823529411765
+      0.7999999999999999
     ],
     "synthetic-brightstream-subscription": [
-      0.9333333333333333
+      0.823529411764706
     ],
     "synthetic-nimbus-health-privacy": [
-      0.8333333333333334
+      0.9090909090909091
+    ],
+    "tiktok-tos-us": [
+      0.5714285714285715
+    ],
+    "zoom-tos": [
+      0.4615384615384615
     ]
   },
   "totals": {
-    "latencyMs": 47,
-    "inputTokens": 7344,
-    "outputTokens": 2381
+    "latencyMs": 200286,
+    "inputTokens": 150799,
+    "outputTokens": 29873
   },
   "perDoc": [
     {
-      "docId": "synthetic-acme-cloud-tos",
-      "gold": 9,
+      "docId": "netflix-tou",
+      "gold": 10,
       "annotationStatus": "draft",
       "proposed": 10,
-      "verified": 8,
-      "rejected": 2,
-      "tp": 6,
-      "fp": 2,
+      "verified": 10,
+      "rejected": 0,
+      "tp": 7,
+      "fp": 3,
       "fn": 3,
-      "precision": 0.75,
-      "recall": 0.6666666666666666,
-      "f1": 0.7058823529411765,
-      "hallucinationRate": 0.2,
-      "score": 85,
-      "llmSuggestedScore": 85,
-      "status": "PARTIAL",
+      "precision": 0.7,
+      "recall": 0.7,
+      "f1": 0.7,
+      "hallucinationRate": 0,
+      "score": 68,
+      "llmSuggestedScore": 45,
+      "status": "OK",
       "fnItems": [
         {
           "goldId": "G7",
           "category": "unilateral_changes",
-          "anchorQuote": "We may modify these Terms at any time without notice"
+          "anchorQuote": "Bu Kullanım Koşullarını zaman zaman değiştirebiliriz"
         },
         {
           "goldId": "G8",
-          "category": "liability_limitation",
-          "anchorQuote": "limited to the amount you paid to Acme in the three months"
+          "category": "content_license_ip",
+          "anchorQuote": "herhangi bir amaçla dünya çapında ve süresiz olarak kullanmakta serbesttir"
         },
         {
           "goldId": "G9",
-          "category": "cancellation_refund",
-          "anchorQuote": "Cancellation can only be completed by contacting our billing team through the support portal"
+          "category": "jurisdiction_governing_law",
+          "anchorQuote": "Bu Kullanım Koşulları, Hollanda kanunlarına tabidir"
         }
       ],
       "fpItems": [
         {
-          "findingId": "C1F8",
+          "findingId": "C1F7",
+          "category": "content_license_ip",
+          "quote": "size herhangi bir ek tazminat vermeksizin, sizin katkınızı belirtmeksizin veya size ödeme yapmaksızın"
+        },
+        {
+          "findingId": "C1F6",
+          "category": "unilateral_changes",
+          "quote": "Sizinle anlaşmamızı, ilişkili haklarımız ve yükümlülüklerimiz dâhil olmak üzere, herhangi bir zamanda bir başka tarafa devir veya temlik edebiliriz"
+        },
+        {
+          "findingId": "C1F10",
           "category": "other",
-          "quote": "limited to the amount you paid to Acme in the three months"
+          "quote": "bilgisayarınıza tam erişim sahibi olmamızı sağlayan bir uzaktan erişim destek aracı kullanması gerekebilir"
+        }
+      ],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "reddit-ua",
+      "gold": 10,
+      "annotationStatus": "draft",
+      "proposed": 16,
+      "verified": 14,
+      "rejected": 0,
+      "tp": 6,
+      "fp": 8,
+      "fn": 4,
+      "precision": 0.42857142857142855,
+      "recall": 0.6,
+      "f1": 0.5,
+      "hallucinationRate": 0,
+      "score": 67,
+      "llmSuggestedScore": 62,
+      "status": "OK",
+      "fnItems": [
+        {
+          "goldId": "G3",
+          "category": "data_sale_or_sharing",
+          "anchorQuote": "make Your Content available for syndication, broadcast, distribution, or publication by other companies, organizations, or individuals who partner with Reddit"
+        },
+        {
+          "goldId": "G6",
+          "category": "unilateral_changes",
+          "anchorQuote": "If the changes, in our sole discretion, are material, we may also notify you"
+        },
+        {
+          "goldId": "G8",
+          "category": "account_termination",
+          "anchorQuote": "delete, deem your content ineligible for monetization, or remove Your Content, at any time and for any reason"
+        },
+        {
+          "goldId": "G10",
+          "category": "content_license_ip",
+          "anchorQuote": "you irrevocably waive any claims and assertions of moral rights or attribution with respect to Your Content"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C2F5",
+          "category": "unilateral_changes",
+          "quote": "By continuing to access or use the Services on or after the Effective Date of the revised Terms, you agree to be bound by the revised Terms."
+        },
+        {
+          "findingId": "C2F7",
+          "category": "liability_limitation",
+          "quote": "you agree to defend, indemnify, and hold Reddit, its affiliates, and their respective, directors, officers, employees, affiliates, agents, contractors, third-party service providers, and licensors"
+        },
+        {
+          "findingId": "C3F3",
+          "category": "liability_limitation",
+          "quote": "Reddit isn’t liable for damages that result from a non-material breach of any other applicable duty of care."
+        },
+        {
+          "findingId": "C3F4",
+          "category": "unilateral_changes",
+          "quote": "to the extent any Additional Terms conflict with these Terms, the Additional Terms govern with respect to your use of the corresponding Services."
+        },
+        {
+          "findingId": "C3F5",
+          "category": "other",
+          "quote": "Reddit may, without restriction, assign any of our rights and obligations under these Terms, at its sole discretion, with 30 days’ prior notice."
+        },
+        {
+          "findingId": "C2F10",
+          "category": "other",
+          "quote": "You understand that through your use of the Services, you consent to the collection and use of this information as set forth in the Privacy Policy."
+        },
+        {
+          "findingId": "C1F1",
+          "category": "other",
+          "quote": "By accessing or using our Services, you agree to be bound by these Terms."
+        },
+        {
+          "findingId": "C2F9",
+          "category": "tracking_profiling",
+          "quote": "The type, degree, and targeting of advertisements are subject to change, and you acknowledge and agree that we may place advertisements"
+        }
+      ],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "spotify-tou",
+      "gold": 11,
+      "annotationStatus": "draft",
+      "proposed": 21,
+      "verified": 21,
+      "rejected": 0,
+      "tp": 9,
+      "fp": 12,
+      "fn": 2,
+      "precision": 0.42857142857142855,
+      "recall": 0.8181818181818182,
+      "f1": 0.5625,
+      "hallucinationRate": 0,
+      "score": 92,
+      "llmSuggestedScore": 78,
+      "status": "OK",
+      "fnItems": [
+        {
+          "goldId": "G6",
+          "category": "account_termination",
+          "anchorQuote": "suspend your access to the Spotify Service at any time if we believe you have breached any of these Terms"
+        },
+        {
+          "goldId": "G11",
+          "category": "unilateral_changes",
+          "anchorQuote": "we may modify, suspend, or stop (permanently or temporarily) providing all or part of the Spotify Service"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C2F1",
+          "category": "arbitration_class_waiver",
+          "quote": "each party may bring a Dispute against the other party only in an individual capacity and not participate as a plaintiff, claimant, or class member in any class, collective, consolidated, private attorney general, or representative proceeding"
+        },
+        {
+          "findingId": "C1F8",
+          "category": "auto_renewal",
+          "quote": "Paid Subscriptions continue indefinitely until cancelled."
+        },
+        {
+          "findingId": "C2F2",
+          "category": "arbitration_class_waiver",
+          "quote": "all of the cases must be resolved in arbitration through staged sets of proceedings. You agree to this process even though it may delay the arbitration of your case."
+        },
+        {
+          "findingId": "C2F5",
+          "category": "arbitration_class_waiver",
+          "quote": "Opting out of a material change to the Arbitration Agreement is not an opt-out of arbitration altogether."
+        },
+        {
+          "findingId": "C1F6",
+          "category": "liability_limitation",
+          "quote": "YOUR SOLE AND EXCLUSIVE REMEDY FOR ANY PROBLEMS OR DISSATISFACTION WITH THE SPOTIFY SERVICE IS TO UNINSTALL ANY SPOTIFY SOFTWARE AND TO STOP USING THE SPOTIFY SERVICE."
+        },
+        {
+          "findingId": "C1F11",
+          "category": "unilateral_changes",
+          "quote": "Spotify reserves the right to change our Spotify Service offerings and their availability from time to time, without notice or liability to you."
+        },
+        {
+          "findingId": "C1F3",
+          "category": "arbitration_class_waiver",
+          "quote": "the parties agree to engage in good faith for a period of sixty (60) days in an effort to resolve the Dispute"
+        },
+        {
+          "findingId": "C1F12",
+          "category": "account_termination",
+          "quote": "Spotify shall have no liability or responsibility to you, and (except as expressly provided in these Terms) Spotify will not refund any amounts that you have already paid."
+        },
+        {
+          "findingId": "C1F13",
+          "category": "liability_limitation",
+          "quote": "You agree to indemnify and hold Spotify harmless from and against all damages, losses, and expenses of any kind"
+        },
+        {
+          "findingId": "C1F15",
+          "category": "jurisdiction_governing_law",
+          "quote": "you and Spotify agree to the exclusive jurisdiction of the federal or state courts located in New York, New York"
+        },
+        {
+          "findingId": "C2F3",
+          "category": "arbitration_class_waiver",
+          "quote": "If you choose to file an arbitration proceeding, the allocation and payment of Arbitration Fees will be governed by the NAM Rules"
+        },
+        {
+          "findingId": "C2F6",
+          "category": "other",
+          "quote": "Spotify may assign any or all of these Terms, and may assign or delegate, in whole or in part, any of its rights or obligations under these Terms."
+        }
+      ],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "synthetic-acme-cloud-tos",
+      "gold": 9,
+      "annotationStatus": "draft",
+      "proposed": 11,
+      "verified": 11,
+      "rejected": 0,
+      "tp": 8,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.7272727272727273,
+      "recall": 0.8888888888888888,
+      "f1": 0.7999999999999999,
+      "hallucinationRate": 0,
+      "score": 90,
+      "llmSuggestedScore": 88,
+      "status": "OK",
+      "fnItems": [
+        {
+          "goldId": "G3",
+          "category": "auto_renewal",
+          "anchorQuote": "Your subscription will automatically renew at the end of each billing period"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C1F5",
+          "category": "data_retention",
+          "quote": "Data used for this purpose may be retained after you delete the original files."
         },
         {
           "findingId": "C1F10",
           "category": "account_termination",
-          "quote": "we may suspend paid features until the outstanding balance is paid"
+          "quote": "or if your account has been inactive for more than two years. Where reasonable, we will give you an opportunity to export your files before termination."
+        },
+        {
+          "findingId": "C1F11",
+          "category": "jurisdiction_governing_law",
+          "quote": "the state and federal courts located in Wilmington, Delaware will have exclusive jurisdiction over any claim not subject to arbitration."
         }
       ],
       "unlocatedGold": []
@@ -126,58 +372,274 @@
       "docId": "synthetic-brightstream-subscription",
       "gold": 8,
       "annotationStatus": "draft",
-      "proposed": 8,
-      "verified": 7,
-      "rejected": 1,
+      "proposed": 9,
+      "verified": 9,
+      "rejected": 0,
       "tp": 7,
-      "fp": 0,
+      "fp": 2,
       "fn": 1,
-      "precision": 1,
+      "precision": 0.7777777777777778,
       "recall": 0.875,
-      "f1": 0.9333333333333333,
-      "hallucinationRate": 0.125,
-      "score": 75,
-      "llmSuggestedScore": 70,
-      "status": "PARTIAL",
+      "f1": 0.823529411764706,
+      "hallucinationRate": 0,
+      "score": 78,
+      "llmSuggestedScore": 72,
+      "status": "OK",
       "fnItems": [
         {
-          "goldId": "G8",
+          "goldId": "G1",
           "category": "auto_renewal",
-          "anchorQuote": "your plan converts into a paid subscription and the monthly fee is charged"
+          "anchorQuote": "Your BrightStream subscription renews automatically every month"
         }
       ],
-      "fpItems": [],
+      "fpItems": [
+        {
+          "findingId": "C1F3",
+          "category": "tracking_profiling",
+          "quote": "the time and place you listen, and the devices you use. We use this listening history to build a profile of your tastes and moods"
+        },
+        {
+          "findingId": "C1F4",
+          "category": "tracking_profiling",
+          "quote": "we may verify the address using approximate location data collected from members’ devices."
+        }
+      ],
       "unlocatedGold": []
     },
     {
       "docId": "synthetic-nimbus-health-privacy",
       "gold": 6,
       "annotationStatus": "draft",
-      "proposed": 7,
-      "verified": 6,
-      "rejected": 1,
+      "proposed": 5,
+      "verified": 5,
+      "rejected": 0,
       "tp": 5,
-      "fp": 1,
+      "fp": 0,
       "fn": 1,
-      "precision": 0.8333333333333334,
+      "precision": 1,
       "recall": 0.8333333333333334,
-      "f1": 0.8333333333333334,
-      "hallucinationRate": 0.14285714285714285,
-      "score": 67,
+      "f1": 0.9090909090909091,
+      "hallucinationRate": 0,
+      "score": 75,
       "llmSuggestedScore": 88,
-      "status": "PARTIAL",
+      "status": "OK",
       "fnItems": [
         {
-          "goldId": "G1",
+          "goldId": "G6",
           "category": "sensitive_biometric_data",
-          "anchorQuote": "we collect and store a faceprint derived from photos taken by your device camera"
+          "anchorQuote": "menstrual cycle information and blood oxygen levels"
+        }
+      ],
+      "fpItems": [],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "tiktok-tos-us",
+      "gold": 12,
+      "annotationStatus": "draft",
+      "proposed": 16,
+      "verified": 16,
+      "rejected": 0,
+      "tp": 8,
+      "fp": 8,
+      "fn": 4,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "f1": 0.5714285714285715,
+      "hallucinationRate": 0,
+      "score": 86,
+      "llmSuggestedScore": 68,
+      "status": "OK",
+      "fnItems": [
+        {
+          "goldId": "G6",
+          "category": "data_retention",
+          "anchorQuote": "Your Content will remain publicly accessible on the Platform if it has been incorporated into content posted by other users"
+        },
+        {
+          "goldId": "G8",
+          "category": "account_termination",
+          "anchorQuote": "We may remove or restrict access to any content, including yours, whether publicly or privately posted, for any reason"
+        },
+        {
+          "goldId": "G9",
+          "category": "unilateral_changes",
+          "anchorQuote": "Where we need to make urgent changes, for example, for security, safety, legal or regulatory reasons, we may not be able to provide you with advance notice"
+        },
+        {
+          "goldId": "G11",
+          "category": "other",
+          "anchorQuote": "YOU MUST INITIATE ANY PROCEEDING OR ACTION WITHIN ONE (1) YEAR OF THE DATE OF THE OCCURRENCE"
         }
       ],
       "fpItems": [
         {
-          "findingId": "C1F7",
+          "findingId": "C1F11",
+          "category": "arbitration_class_waiver",
+          "quote": "YOU MUST INITIATE ANY PROCEEDING OR ACTION WITHIN ONE (1) YEAR OF THE DATE OF THE OCCURRENCE OF THE EVENT OR FACTS GIVING RISE TO A DISPUTE"
+        },
+        {
+          "findingId": "C1F13",
+          "category": "other",
+          "quote": "You agree to defend, indemnify, and hold harmless TikTok USDS Joint Venture and our affiliates, service providers, and business partners"
+        },
+        {
+          "findingId": "C1F14",
+          "category": "unilateral_changes",
+          "quote": "If you continue to use the Platform after any updated Terms are in effect, you agree to be bound by the updated Terms."
+        },
+        {
+          "findingId": "C1F4",
+          "category": "content_license_ip",
+          "quote": "We will own all rights in anything we develop based on your comments, ideas, or feedback."
+        },
+        {
+          "findingId": "C1F8",
+          "category": "account_termination",
+          "quote": "We may revoke, reclaim, and/or reassign the username of your account in certain circumstances, such as, when you have not logged into your account for 180 days"
+        },
+        {
+          "findingId": "C1F10",
+          "category": "liability_limitation",
+          "quote": "Under no circumstance will TikTok USDS Joint Venture or our affiliates, service providers, or business partners"
+        },
+        {
+          "findingId": "C2F1",
+          "category": "unilateral_changes",
+          "quote": "Our rights and obligations under these Terms are freely assignable by us without any requirement to notify you or any third party"
+        },
+        {
+          "findingId": "C1F15",
+          "category": "other",
+          "quote": "submit appeals, reports, notices or complaints which are unfounded,"
+        }
+      ],
+      "unlocatedGold": []
+    },
+    {
+      "docId": "zoom-tos",
+      "gold": 10,
+      "annotationStatus": "draft",
+      "proposed": 29,
+      "verified": 29,
+      "rejected": 0,
+      "tp": 9,
+      "fp": 20,
+      "fn": 1,
+      "precision": 0.3103448275862069,
+      "recall": 0.9,
+      "f1": 0.4615384615384615,
+      "hallucinationRate": 0,
+      "score": 96,
+      "llmSuggestedScore": 75,
+      "status": "OK",
+      "fnItems": [
+        {
+          "goldId": "G5",
+          "category": "price_change",
+          "anchorQuote": "Zoom may change prices for the Services at any time, in its sole discretion"
+        }
+      ],
+      "fpItems": [
+        {
+          "findingId": "C1F1",
+          "category": "arbitration_class_waiver",
+          "quote": "in Section 27, that you and Zoom will arbitrate certain claims instead of going to court and that you will not bring class-action claims against Zoom"
+        },
+        {
+          "findingId": "C2F2",
+          "category": "arbitration_class_waiver",
+          "quote": "You and Zoom hereby waive any constitutional and statutory rights to sue in court and have a trial in front of a judge or a jury."
+        },
+        {
+          "findingId": "C1F4",
+          "category": "price_change",
+          "quote": "If you do not terminate or modify the affected Services within the applicable Rate Change Notice time period, then you shall be deemed to have automatically accepted the change to your Charges"
+        },
+        {
+          "findingId": "C2F5",
+          "category": "arbitration_class_waiver",
+          "quote": "within (i) thirty (30) calendar days of April 1, 2023 if you are an existing user, or (ii) thirty (30) calendar days of the date you created your account if you are a new user."
+        },
+        {
+          "findingId": "C2F4",
+          "category": "arbitration_class_waiver",
+          "quote": "You agree that compliance with this Section 27.3 is a condition precedent to commencing arbitration, and that the arbitrator shall dismiss any arbitration filed without fully and completely complying"
+        },
+        {
+          "findingId": "C2F7",
+          "category": "liability_limitation",
+          "quote": "ZOOM DOES NOT ASSUME ANY RESPONSIBILITY FOR RETENTION OF ANY DATA, INCLUDING CUSTOMER CONTENT AND CUSTOMER DATA, USER INFORMATION, OR COMMUNICATIONS BETWEEN USERS."
+        },
+        {
+          "findingId": "C1F8",
+          "category": "account_termination",
+          "quote": "if any failure to pay Charges continues for five (5) calendar days following the due date, Zoom may terminate, suspend, or disconnect your Services immediately and without prior notice"
+        },
+        {
+          "findingId": "C2F8",
+          "category": "liability_limitation",
+          "quote": "you agree to indemnify, defend, and hold Zoom and its affiliates and each of our licensors and suppliers (“Indemnified Parties”) harmless"
+        },
+        {
+          "findingId": "C2F12",
+          "category": "jurisdiction_governing_law",
+          "quote": "the parties consent to the exclusive jurisdiction and venue of the state courts located in and serving Santa Clara County, California"
+        },
+        {
+          "findingId": "C1F11",
+          "category": "other",
+          "quote": "we may disclose Customer information, including Customer Confidential Information, to a tax authority without notice to you before or after the disclosure"
+        },
+        {
+          "findingId": "C1F12",
+          "category": "liability_limitation",
+          "quote": "Under no circumstances will Zoom be liable in any way for any data or other content viewed while using the Services"
+        },
+        {
+          "findingId": "C2F10",
+          "category": "tracking_profiling",
+          "quote": "during and after the term of this Agreement, including to generate industry benchmarks or best practices guidance, recommendations, or similar reports."
+        },
+        {
+          "findingId": "C1F10",
+          "category": "tracking_profiling",
+          "quote": "Zoom owns all rights, title, and interest in and to Service Generated Data."
+        },
+        {
+          "findingId": "C1F13",
+          "category": "other",
+          "quote": "Zoom may, in its sole discretion, (i) discontinue the Services, or (ii) modify the features or functionality of the Services or Software."
+        },
+        {
+          "findingId": "C1F14",
+          "category": "other",
+          "quote": "to charge your current primary Payment Method by using the details of such Payment Method saved in our system, even if such Payment Method is declined"
+        },
+        {
+          "findingId": "C2F9",
           "category": "data_sale_or_sharing",
-          "quote": "We may also disclose personal data to service providers who process it on our behalf"
+          "quote": "determined by Zoom in its sole discretion to be (a) a risk or potential risk of harm to a person or to the health of a person"
+        },
+        {
+          "findingId": "C1F15",
+          "category": "cancellation_refund",
+          "quote": "If the Services begin before any withdrawal or cooling-off period, or you fail to terminate your Services during the right of withdrawal or cooling-off period"
+        },
+        {
+          "findingId": "C3F1",
+          "category": "other",
+          "quote": "You will provide notice to us (such notice is deemed given when received by Zoom) by letter delivered by a nationally recognized overnight delivery service or first-class postage prepaid mail"
+        },
+        {
+          "findingId": "C3F2",
+          "category": "arbitration_class_waiver",
+          "quote": "license rights granted by you to Zoom, payment obligations, warranty disclaimers, indemnification, arbitration, and the limitation on liability."
+        },
+        {
+          "findingId": "C2F11",
+          "category": "unilateral_changes",
+          "quote": "Zoom may, at any time, in its sole discretion, modify the Services or Software, which may result in the failed interoperation, integration, or support of Third-Party Offerings."
         }
       ],
       "unlocatedGold": []
