@@ -135,7 +135,11 @@ describe("SidePanelApp akışı", () => {
     await setKey(shim.api, "openai", "sk-test-ui-123456789", false);
     initBackground(shim.api);
     render(<SidePanelApp api={shim.api} />, root);
-    ((await waitFor('[data-cy="analyze-btn"]')) as HTMLButtonElement).click();
+    // Panel hazır olana kadar bekle: buton sekme bilgisi gelince etkinleşir, ardından port bağlantısı
+    // ve GET_STATE cevabı gelir. Erken tıklama ya yok sayılır ya da geç gelen GET_STATE görünümü sıfırlar.
+    const btn = (await waitFor('[data-cy="analyze-btn"]:not([disabled])')) as HTMLButtonElement;
+    await new Promise((r) => setTimeout(r, 100));
+    btn.click();
     expect((await waitFor('[data-cy="consent-dialog"]')).textContent).toContain("OpenAI");
     ((await waitFor('[data-cy="consent-decline"]')) as HTMLButtonElement).click();
     expect((await waitFor('[data-cy="error-message"]')).textContent).toContain("Onay verilmediği");
