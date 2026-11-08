@@ -6,50 +6,50 @@
       "company": "Zoom",
       "docType": "terms_of_service",
       "url": "https://www.zoom.com/en/trust/terms/",
-      "retrievedAt": null,
-      "sha256": null,
-      "extractor": null,
-      "status": "not_fetched"
+      "retrievedAt": "2026-11-08T00:19:26.938Z",
+      "sha256": "6aee6881eff5dcd2790173842b37b4934e7a7c5e19988082016d42c3b586bc78",
+      "extractor": "content/extractor@ac6d9b2",
+      "status": "fetched"
     },
     {
       "id": "spotify-tou",
       "company": "Spotify",
       "docType": "terms_of_service",
       "url": "https://www.spotify.com/us/legal/end-user-agreement/",
-      "retrievedAt": null,
-      "sha256": null,
-      "extractor": null,
-      "status": "not_fetched"
+      "retrievedAt": "2026-11-08T00:19:28.120Z",
+      "sha256": "58f20911eec697556b0be348784637c588425d2229afcf976be1c1db8a9cdb6d",
+      "extractor": "content/extractor@ac6d9b2",
+      "status": "fetched"
     },
     {
       "id": "tiktok-tos-us",
       "company": "TikTok",
       "docType": "terms_of_service",
       "url": "https://www.tiktok.com/legal/page/us/terms-of-service/en",
-      "retrievedAt": null,
-      "sha256": null,
-      "extractor": null,
-      "status": "not_fetched"
+      "retrievedAt": "2026-11-08T00:19:28.678Z",
+      "sha256": "156f6c1f8e71b7ec3a58343d5935c729c93996c813e4888c53499b8c6be03199",
+      "extractor": "content/extractor@ac6d9b2",
+      "status": "fetched"
     },
     {
       "id": "netflix-tou",
       "company": "Netflix",
       "docType": "terms_of_service",
       "url": "https://help.netflix.com/legal/termsofuse",
-      "retrievedAt": null,
-      "sha256": null,
-      "extractor": null,
-      "status": "not_fetched"
+      "retrievedAt": "2026-11-08T00:19:28.998Z",
+      "sha256": "c714a4edfd2dc3ecb1bd6b0cc7fc1fc53a859ff95db600f35d72a3d0c7a87a3c",
+      "extractor": "content/extractor@ac6d9b2",
+      "status": "fetched"
     },
     {
       "id": "reddit-ua",
       "company": "Reddit",
       "docType": "terms_of_service",
       "url": "https://redditinc.com/policies/user-agreement",
-      "retrievedAt": null,
-      "sha256": null,
-      "extractor": null,
-      "status": "not_fetched"
+      "retrievedAt": "2026-11-08T00:19:51.312Z",
+      "sha256": "4b4d9aa3f830ca3f7d6c6e4e0e3cb0d59eea0ab08e3ff0543e36adbfca48268e",
+      "extractor": "content/extractor@ac6d9b2",
+      "status": "fetched"
     },
     {
       "id": "spotify-privacy",

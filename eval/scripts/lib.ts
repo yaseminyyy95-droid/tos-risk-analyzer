@@ -163,4 +163,11 @@ export async function textHash(doc: ExtractedDocument): Promise<string> {
 
 export const fmtPct = (x: number | null) => (x === null || Number.isNaN(x) ? "—" : `${(x * 100).toFixed(1)}%`);
 
-export const isMain = (metaUrl: string) => metaUrl === `file://${process.argv[1]}`;
+export const isMain = (metaUrl: string): boolean => {
+  const arg = process.argv[1];
+  if (!arg) return false;
+  // file:///C:/a/b.ts -> C:/a/b.ts (Windows); file:///home/a/b.ts -> /home/a/b.ts (Linux/macOS)
+  const self = decodeURIComponent(new URL(metaUrl).pathname).replace(/^\/([A-Za-z]:)/, "$1");
+  const norm = (p: string) => path.resolve(p).replace(/\.[cm]?[jt]s$/, "").toLowerCase();
+  return norm(self) === norm(arg);
+};

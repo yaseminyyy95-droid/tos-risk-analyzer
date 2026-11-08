@@ -12,3 +12,7 @@ eval/runs/_last/
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
+
+# Gerçek þirket metinleri (telif): yalnýzca yerelde tutulur
+eval/corpus/*.json
+!eval/corpus/synthetic-*.json
