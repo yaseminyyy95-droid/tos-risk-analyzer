@@ -1,0 +1,104 @@
+{
+  "docId": "reddit-ua",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": false,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "you grant us a worldwide, royalty-free, perpetual, irrevocable, non-exclusive, transferable, and sublicensable license",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "ai_training_use",
+      "severity": "high",
+      "anchorQuote": "this license includes the right to use Your Content to train AI and machine learning models",
+      "acceptableCategories": [
+        "ai_training_use",
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "data_sale_or_sharing",
+      "severity": "high",
+      "anchorQuote": "make Your Content available for syndication, broadcast, distribution, or publication by other companies, organizations, or individuals who partner with Reddit",
+      "acceptableCategories": [
+        "data_sale_or_sharing",
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "account_termination",
+      "severity": "medium",
+      "anchorQuote": "we may suspend or terminate your Account, moderator status, or ability to access or use the Services at any time for any or no reason",
+      "acceptableCategories": [
+        "account_termination"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "EXCEED THE GREATER OF ONE HUNDRED U.S. DOLLARS ($100) OR ANY AMOUNT YOU PAID REDDIT IN THE PREVIOUS SIX MONTHS",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "If the changes, in our sole discretion, are material, we may also notify you",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "unilateral_changes",
+      "severity": "low",
+      "anchorQuote": "We reserve the right to modify, suspend, or discontinue the Services (in whole or in part) at any time, with or without notice to you",
+      "acceptableCategories": [
+        "unilateral_changes",
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "account_termination",
+      "severity": "low",
+      "anchorQuote": "delete, deem your content ineligible for monetization, or remove Your Content, at any time and for any reason",
+      "acceptableCategories": [
+        "account_termination",
+        "other"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "jurisdiction_governing_law",
+      "severity": "medium",
+      "anchorQuote": "all disputes related to these Terms or the Services will be brought solely in the federal or state courts located in San Francisco, California",
+      "acceptableCategories": [
+        "jurisdiction_governing_law"
+      ]
+    },
+    {
+      "goldId": "G10",
+      "category": "content_license_ip",
+      "severity": "low",
+      "anchorQuote": "you irrevocably waive any claims and assertions of moral rights or attribution with respect to Your Content",
+      "acceptableCategories": [
+        "content_license_ip",
+        "other"
+      ]
+    }
+  ],
+  "notes": "Kaydedilen sayfa iki sürüm içeriyor (ABD/diğer ve AB-BK-İsviçre) ve dil seçici menüsünden gelen ~1600 gürültü bloğu var. Gold yalnızca ABD sürümüne göre etiketlendi; çoğu anchorQuote AB sürümünde de birebir geçtiği için eşleştirme belirsiz olabilir."
+}

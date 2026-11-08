@@ -1,0 +1,105 @@
+{
+  "docId": "zoom-tos",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": false,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "arbitration_class_waiver",
+      "severity": "critical",
+      "anchorQuote": "You agree to resolve certain disputes with Zoom through binding arbitration",
+      "acceptableCategories": [
+        "arbitration_class_waiver",
+        "jurisdiction_governing_law"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "You grant Zoom a perpetual, worldwide, non-exclusive, royalty-free, sublicensable, and transferable license",
+      "acceptableCategories": [
+        "content_license_ip",
+        "data_sale_or_sharing"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "auto_renewal",
+      "severity": "high",
+      "anchorQuote": "each Renewal Term for the Services will begin automatically at the end of the then-current Initial Subscription Term",
+      "acceptableCategories": [
+        "auto_renewal",
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "cancellation_refund",
+      "severity": "high",
+      "anchorQuote": "all payments are non-cancelable for the Initial Subscription Term or the then-current Renewal Term",
+      "acceptableCategories": [
+        "cancellation_refund",
+        "auto_renewal"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "price_change",
+      "severity": "medium",
+      "anchorQuote": "Zoom may change prices for the Services at any time, in its sole discretion",
+      "acceptableCategories": [
+        "price_change"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "account_termination",
+      "severity": "medium",
+      "anchorQuote": "Zoom may terminate this Agreement, for any reason or no reason",
+      "acceptableCategories": [
+        "account_termination"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "If you continue to use the Services after the effective date of the Changes, then you agree to the revised terms and conditions",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "Zoom may modify, delete, and make additions to its guides, statements, policies, and notices, with or without notice to you",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "EXCEEDING THE AMOUNT ACTUALLY PAID BY YOU FOR THE SERVICES (IF ANY) IN THE TWELVE (12) MONTHS",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G10",
+      "category": "other",
+      "severity": "medium",
+      "anchorQuote": "must be filed within one (1) year after such claim or cause of action arose",
+      "acceptableCategories": [
+        "other",
+        "arbitration_class_waiver",
+        "liability_limitation"
+      ]
+    }
+  ],
+  "notes": "Zoom, toplantı içeriğini yapay zekâ eğitiminde KULLANMADIĞINI açıkça belirtiyor; bu bir risk değildir (model ai_training_use raporlarsa FP olmalı). Tahkim için 30 günlük opt-out var; rehber gereği yine critical."
+}

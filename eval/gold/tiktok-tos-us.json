@@ -1,0 +1,124 @@
+{
+  "docId": "tiktok-tos-us",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": false,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "ai_training_use",
+      "severity": "high",
+      "anchorQuote": "including training, testing, and improving our machine learning models and algorithms",
+      "acceptableCategories": [
+        "ai_training_use",
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "assignable and sub-licensable, including through multiple tiers",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "you also grant to each user of the Platform a non-exclusive, royalty-free, perpetual and irrevocable, worldwide license",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "tracking_profiling",
+      "severity": "high",
+      "anchorQuote": "customize ads and other sponsored content from creators, advertisers, and partners, that you see on and off the Platform",
+      "acceptableCategories": [
+        "tracking_profiling",
+        "data_sale_or_sharing"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "other",
+      "severity": "medium",
+      "anchorQuote": "you give us permission to use your name, profile image and username, in connection with ads",
+      "acceptableCategories": [
+        "other",
+        "data_sale_or_sharing",
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "data_retention",
+      "severity": "medium",
+      "anchorQuote": "Your Content will remain publicly accessible on the Platform if it has been incorporated into content posted by other users",
+      "acceptableCategories": [
+        "data_retention",
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "account_termination",
+      "severity": "medium",
+      "anchorQuote": "We reserve the right, at any time and without prior notice, to ban or suspend your account",
+      "acceptableCategories": [
+        "account_termination"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "account_termination",
+      "severity": "low",
+      "anchorQuote": "We may remove or restrict access to any content, including yours, whether publicly or privately posted, for any reason",
+      "acceptableCategories": [
+        "account_termination",
+        "other"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "Where we need to make urgent changes, for example, for security, safety, legal or regulatory reasons, we may not be able to provide you with advance notice",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G10",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "exceed the greater of $100 or the amount you have paid us in the past 12 months",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G11",
+      "category": "other",
+      "severity": "medium",
+      "anchorQuote": "YOU MUST INITIATE ANY PROCEEDING OR ACTION WITHIN ONE (1) YEAR OF THE DATE OF THE OCCURRENCE",
+      "acceptableCategories": [
+        "other",
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G12",
+      "category": "jurisdiction_governing_law",
+      "severity": "medium",
+      "anchorQuote": "shall also be resolved exclusively in the U.S. District Court for the Central District of California",
+      "acceptableCategories": [
+        "jurisdiction_governing_law"
+      ]
+    }
+  ],
+  "notes": "ABD sürümünde tahkim maddesi yok; uyuşmazlıklar Kaliforniya mahkemelerinde. Bu nedenle tahkim etiketlenmedi (model tahkim raporlarsa FP olmalı)."
+}

@@ -1,0 +1,101 @@
+{
+  "docId": "netflix-tou",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": false,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "arbitration_class_waiver",
+      "severity": "critical",
+      "anchorQuote": "YALNIZCA BİREYSEL OLARAK BİRBİRİNİZE KARŞI TALEPTE BULUNABİLECEĞİNİZİ VE HERHANGİ BİR TOPLU YA DA TEMSİLÎ DAVANIN DAVACISI",
+      "acceptableCategories": [
+        "arbitration_class_waiver"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "cancellation_refund",
+      "severity": "high",
+      "anchorQuote": "tamamlanmamış abonelik dönemleri ya da kullanılmamış Netflix içerikleri için tarafımızca para iadesi ya da kredi tanımlaması yapılmamaktadır",
+      "acceptableCategories": [
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "auto_renewal",
+      "severity": "medium",
+      "anchorQuote": "Aboneliğinizi fatura kesim tarihinden önce iptal etmediğiniz sürece, tarafımıza bir sonraki faturalama döneminin abonelik ücretini Ödeme Yöntemi üzerinden tahsil etme yetkisi vermiş olursunuz",
+      "acceptableCategories": [
+        "auto_renewal",
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "other",
+      "severity": "medium",
+      "anchorQuote": "hesabınızla ilişkilendirilmiş herhangi bir Ödeme Yöntemi üzerinden ücret almamız için bize yetki vermiş sayılırsınız",
+      "acceptableCategories": [
+        "other",
+        "auto_renewal"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "price_change",
+      "severity": "medium",
+      "anchorQuote": "Abonelik planımızda ve hizmetimizin ücretinde zaman zaman değişiklik yapabiliriz",
+      "acceptableCategories": [
+        "price_change"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "Tarafımıza karşı tüm özel, dolaylı ya da bağlı hasarlardan feragat etmiş sayılırsınız",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "Bu Kullanım Koşullarını zaman zaman değiştirebiliriz",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "content_license_ip",
+      "severity": "medium",
+      "anchorQuote": "herhangi bir amaçla dünya çapında ve süresiz olarak kullanmakta serbesttir",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "jurisdiction_governing_law",
+      "severity": "low",
+      "anchorQuote": "Bu Kullanım Koşulları, Hollanda kanunlarına tabidir",
+      "acceptableCategories": [
+        "jurisdiction_governing_law"
+      ]
+    },
+    {
+      "goldId": "G10",
+      "category": "account_termination",
+      "severity": "low",
+      "anchorQuote": "hesabınızı sonlandırabilir veya hesabınızı askıya alabiliriz",
+      "acceptableCategories": [
+        "account_termination"
+      ]
+    }
+  ],
+  "notes": "Türkiye sürümü (Türkçe). Zorunlu tahkim yok; toplu dava feragati ayrı madde. Hollanda hukuku seçimi tüketici haklarını saklı tuttuğu için low."
+}

@@ -1,0 +1,115 @@
+{
+  "docId": "spotify-tou",
+  "annotationStatus": "draft",
+  "annotator": "Claude (LLM destekli taslak) — insan incelemesi bekliyor",
+  "synthetic": false,
+  "items": [
+    {
+      "goldId": "G1",
+      "category": "arbitration_class_waiver",
+      "severity": "critical",
+      "anchorQuote": "will be determined by binding individual (not class) arbitration",
+      "acceptableCategories": [
+        "arbitration_class_waiver",
+        "jurisdiction_governing_law"
+      ]
+    },
+    {
+      "goldId": "G2",
+      "category": "arbitration_class_waiver",
+      "severity": "critical",
+      "anchorQuote": "Neither party may participate as a plaintiff, claimant, or class member in any class, collective, consolidated, private attorney general, or representative proceeding",
+      "acceptableCategories": [
+        "arbitration_class_waiver"
+      ]
+    },
+    {
+      "goldId": "G3",
+      "category": "cancellation_refund",
+      "severity": "high",
+      "anchorQuote": "we do not provide refunds or credits for any partial subscription periods",
+      "acceptableCategories": [
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G4",
+      "category": "content_license_ip",
+      "severity": "high",
+      "anchorQuote": "you hereby grant to Spotify a non-exclusive, transferable, sublicensable, royalty-free, fully paid, irrevocable, worldwide license",
+      "acceptableCategories": [
+        "content_license_ip"
+      ]
+    },
+    {
+      "goldId": "G5",
+      "category": "price_change",
+      "severity": "medium",
+      "anchorQuote": "by continuing to use the Spotify Service after the price change takes effect, you will have accepted the new price",
+      "acceptableCategories": [
+        "price_change"
+      ]
+    },
+    {
+      "goldId": "G6",
+      "category": "account_termination",
+      "severity": "medium",
+      "anchorQuote": "suspend your access to the Spotify Service at any time if we believe you have breached any of these Terms",
+      "acceptableCategories": [
+        "account_termination",
+        "cancellation_refund"
+      ]
+    },
+    {
+      "goldId": "G7",
+      "category": "liability_limitation",
+      "severity": "medium",
+      "anchorQuote": "THE AMOUNTS PAID BY YOU TO SPOTIFY DURING THE TWELVE MONTHS PRIOR TO THE FIRST CLAIM",
+      "acceptableCategories": [
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G8",
+      "category": "other",
+      "severity": "medium",
+      "anchorQuote": "WITHIN ONE (1) YEAR AFTER THE DATE THE PARTY ASSERTING THE CLAIM FIRST KNOWS",
+      "acceptableCategories": [
+        "other",
+        "arbitration_class_waiver",
+        "liability_limitation"
+      ]
+    },
+    {
+      "goldId": "G9",
+      "category": "unilateral_changes",
+      "severity": "medium",
+      "anchorQuote": "Your use of the Spotify Service following any changes to these Terms will constitute your acceptance of such changes",
+      "acceptableCategories": [
+        "unilateral_changes"
+      ]
+    },
+    {
+      "goldId": "G10",
+      "category": "tracking_profiling",
+      "severity": "medium",
+      "anchorQuote": "to provide advertising and other information to you, and (3) to allow our business partners to do the same",
+      "acceptableCategories": [
+        "tracking_profiling",
+        "data_sale_or_sharing",
+        "other"
+      ]
+    },
+    {
+      "goldId": "G11",
+      "category": "unilateral_changes",
+      "severity": "low",
+      "anchorQuote": "we may modify, suspend, or stop (permanently or temporarily) providing all or part of the Spotify Service",
+      "acceptableCategories": [
+        "unilateral_changes",
+        "other"
+      ]
+    }
+  ],
+  "notes": "Tahkim + toplu dava feragati ayrı paragraflarda olduğu için iki ayrı madde. Jüri feragati (ayrı kısa paragraf) tahkim ailesi içinde sayıldı, ayrıca etiketlenmedi."
+}
